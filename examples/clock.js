@@ -4,6 +4,7 @@ var fs = require('fs');
 var util = require('util');
 
 var vg = require('openvg');
+var eu = require('./examples-util')
 
 var Canvas = require('../lib/canvas');
 var canvas = new Canvas(320, 320);
@@ -104,23 +105,10 @@ function clock(ctx){
   ctx.restore();
 }
 
-var animationHandle;
-
-(function animloop() {
-  animationHandle = requestAnimationFrame(animloop);
+eu.animate(function() {
   clock(ctx);
-})();
-
-function terminate() {
-  console.log("Making a clean exit.");
-}
-process.on('exit', terminate);
-
-console.log("Press return to exit.");
-process.stdin.resume();
-process.stdin.setEncoding('utf8');
-
-process.stdin.once('data', function (chunk) {
-  cancelAnimationFrame(animationHandle);
-  process.stdin.pause();
 });
+
+eu.handleTermination();
+
+eu.waitForInput();
