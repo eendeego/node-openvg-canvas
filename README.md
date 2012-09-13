@@ -21,7 +21,7 @@ Build the package:
 
 To test:
 
-    sample/hello.js
+    examples/clock.js
 
 ## 1. Documentation
 
