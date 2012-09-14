@@ -11,6 +11,8 @@ var Canvas = require('../lib/canvas')
 
 var eu = require('./examples-util');
 
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
 // Create gradients
 var lingrad = ctx.createLinearGradient(0,0,0,150);
 lingrad.addColorStop(0, '#00ABEB');
@@ -30,5 +32,6 @@ ctx.strokeStyle = lingrad2;
 ctx.fillRect(10,10,130,130);
 ctx.strokeRect(50,50,50,50);
 
+canvas.vgSwapBuffers()
 eu.handleTermination();
 eu.waitForInput();
