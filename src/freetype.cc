@@ -110,8 +110,16 @@ Handle<Value> freetype::NewMemoryFace(const Arguments& args) {
   Handle<Object> faceObj = Object::New();
   faceObj->Set(String::NewSymbol("face"), External::Wrap(face));
   faceObj->Set(String::NewSymbol("glyph"), Null());
+
+  faceObj->Set(String::NewSymbol("num_glyphs"), Int32::New((*face)->num_glyphs));
+
   faceObj->Set(String::NewSymbol("family_name"), String::New((*face)->family_name));
   faceObj->Set(String::NewSymbol("style_name"), String::New((*face)->style_name));
+
+  faceObj->Set(String::NewSymbol("units_per_EM"), Uint32::New((*face)->units_per_EM));
+  faceObj->Set(String::NewSymbol("ascender"), Int32::New((*face)->ascender));
+  faceObj->Set(String::NewSymbol("descender"), Int32::New((*face)->descender));
+  faceObj->Set(String::NewSymbol("height"), Int32::New((*face)->height));
 
   return scope.Close(faceObj);
 }
