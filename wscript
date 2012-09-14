@@ -15,8 +15,8 @@ def configure(conf):
 
 def build(bld):
   obj = bld.new_task_gen('cxx', 'shlib', 'node_addon')
-  obj.target = "bindings"
+  obj.target = "freetype"
   obj.cxxflags = ["-pthread", "-Wall", "-DARG_CHECKS"]
   obj.linkflags = ["-lfreetype"]
   obj.includes = ["/usr/include/freetype2"]
-  obj.source = ["src/bindings.cc", "src/text.cc", "src/util.cc"]
+  obj.source = ["src/freetype.cc", "src/util.cc"]

@@ -2,10 +2,9 @@
   'targets': [
     {
       # have to specify 'liblib' here since gyp will remove the first one :\
-      'target_name': 'libbindings',
+      'target_name': 'libfreetype',
       'sources': [
-        'src/bindings.cc',
-        'src/text.cc',
+        'src/freetype.cc',
         'src/util.cc'
       ],
       'ldflags': [
