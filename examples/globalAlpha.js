@@ -13,6 +13,7 @@ var Canvas = require('../lib/canvas')
   , fs = require('fs');
 
 ctx.clearRect(0,0,canvas.width,canvas.height); //lll
+ctx.scale(4,4);
 
 ctx.fillStyle = '#FD0';
 ctx.fillRect(0,0,75,75);

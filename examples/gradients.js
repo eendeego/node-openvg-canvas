@@ -12,6 +12,7 @@ var Canvas = require('../lib/canvas')
 var eu = require('./examples-util');
 
 ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.scale(4, 4);
 
 // Create gradients
 var lingrad = ctx.createLinearGradient(0,0,0,150);

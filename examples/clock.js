@@ -23,6 +23,8 @@ function clock(ctx){
   ctx.clearRect(0,0,canvas.width,canvas.height);
 
   ctx.save();
+  ctx.scale(3, 3);
+
   ctx.translate(160,160);
   ctx.beginPath();
   ctx.lineWidth = 14;
