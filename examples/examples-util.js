@@ -17,8 +17,15 @@ var handleTermination = eu.handleTermination = function (callback) {
   process.on('exit', terminate);
 }
 
-var waitForInput = eu.waitForInput = function (callback) {
-  console.log("Press return to exit.");
+var waitForInput = eu.waitForInput = function (prompt, callback) {
+  if (prompt === undefined) {
+    prompt = 'Press return to exit.';
+  } else if (callback === undefined) {
+    callback = prompt;
+    prompt = 'Press return to exit.';
+  }
+
+  console.log(prompt);
   process.stdin.resume();
   process.stdin.setEncoding('utf8');
 
