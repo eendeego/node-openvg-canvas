@@ -24,7 +24,10 @@ var waitForInput = eu.waitForInput = function (callback) {
 
   process.stdin.once('data', function (chunk) {
     cancelAnimationFrame(animationHandle);
-    if (callback) { callback(); }
-    process.stdin.pause();
+    if (callback) {
+      callback();
+    } else {
+      process.stdin.pause();
+    }
   });
 }
