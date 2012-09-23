@@ -2,6 +2,14 @@ var eu = module.exports;
 
 var animationHandle;
 
+var stopWatch = eu.stopWatch = function (str, fn) {
+  var end, start;
+  start = new Date();
+  fn();
+  end = new Date();
+  console.log(str + ' took: ' + (end - start) + 'ms');
+}
+
 var animate = eu.animate = function (paint) {
   (function animloop(time) {
     animationHandle = requestAnimationFrame(animloop);
