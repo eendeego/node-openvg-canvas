@@ -3,9 +3,9 @@ var eu = module.exports;
 var animationHandle;
 
 var animate = eu.animate = function (paint) {
-  (function animloop() {
+  (function animloop(time) {
     animationHandle = requestAnimationFrame(animloop);
-    paint();
+    paint(time);
   })();
 }
 
