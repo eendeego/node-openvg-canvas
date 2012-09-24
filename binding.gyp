@@ -1,14 +1,13 @@
 {
   'targets': [
     {
-      # have to specify 'liblib' here since gyp will remove the first one :\
-      'target_name': 'libfreetype',
+      'target_name': 'freetype',
       'sources': [
         'src/freetype.cc',
         'src/util.cc'
       ],
       'ldflags': [
-        "-lfreetype"
+        "<!@(freetype-config --libs)"
       ],
       'cflags': [
         "-DENABLE_GDB_JIT_INTERFACE",
