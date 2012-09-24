@@ -1,0 +1,14 @@
+#!/bin/sh
+
+FULL=$PWD/$0
+CANONIC=`readlink -f $0`
+
+if [ "$CANONIC" = "$FULL" ]; then
+  BIN_DIR=`dirname $CANONIC`
+  MODULE_DIR=`dirname $BIN_DIR`
+else
+  NPM_DIR=`dirname $CANONIC`
+  MODULE_DIR=`dirname $NPM_DIR`
+fi
+
+$MODULE_DIR/node_modules/openvg/bin/node-openvg "$@"

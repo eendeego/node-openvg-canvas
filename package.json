@@ -4,6 +4,9 @@
   "version": "0.1.0",
   "author": "Luis Reis <luis@luismreis.com> (http://luismreis.com/)",
   "description": "Canvas on node-openvg",
+  "bin": {
+    "node-canvas" : "./bin/node-canvas"
+  },
   "main": "lib/canvas.js",
   "repository": {
     "type": "git",

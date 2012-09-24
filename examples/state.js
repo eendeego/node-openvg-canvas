@@ -1,4 +1,4 @@
-#!/usr/bin/env ./node_modules/openvg/bin/node-pi
+#!/usr/bin/env node-canvas
 
 /**
  * Module dependencies.

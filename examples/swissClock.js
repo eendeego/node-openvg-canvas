@@ -1,4 +1,4 @@
-#!/usr/bin/env ./node_modules/openvg/bin/node-pi
+#!/usr/bin/env node-canvas
 
 var fs = require('fs');
 var util = require('util');

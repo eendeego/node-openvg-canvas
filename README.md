@@ -17,10 +17,10 @@ Build the package:
 
     cd node-openvg-canvas
     npm install
-    node-waf configure build
 
 To test:
 
+    export PATH=$PWD/bin:$PATH
     examples/clock.js
 
 ## 1. Documentation
