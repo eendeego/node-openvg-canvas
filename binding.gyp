@@ -13,7 +13,8 @@
       'cflags': [
         "-DENABLE_GDB_JIT_INTERFACE",
         "-DBUILDING_NODE_EXTENSION",
-        "-Wall"
+        "-Wall",
+        "<!@(freetype-config --cflags)"
       ]
     }
   ]
