@@ -19,13 +19,14 @@ function getY(angle) {
 
 function clock(ctx){
   var now = new Date();
+  var i;
   //ctx.clearRect(0,0,320,320);
   ctx.clearRect(0,0,canvas.width,canvas.height);
 
   ctx.save();
   ctx.scale(3, 3);
+  ctx.translate(canvas.width/6, canvas.height/6);
 
-  ctx.translate(160,160);
   ctx.beginPath();
   ctx.lineWidth = 14;
   ctx.strokeStyle = '#325FA2';
@@ -35,29 +36,29 @@ function clock(ctx){
   ctx.fill();
 
   ctx.strokeStyle = '#000000';
+  ctx.beginPath();
   // Hour marks
   ctx.lineWidth = 8;
-  for (var i=0;i<12;i++){
+  for (i=0; i<12; i++){
     var x = getX(Math.PI/6*i);
     var y = getY(Math.PI/6*i);
-    ctx.beginPath();
     ctx.moveTo(x*100,y*100);
     ctx.lineTo(x*125,y*125);
-    ctx.stroke();
   }
+  ctx.stroke();
 
   // Minute marks
   ctx.lineWidth = 5;
-  for (i=0;i<60;i++){
-    if (i%5!=0) {
+  ctx.beginPath();
+  for (i=0; i<60; i++){
+    if (i % 5 != 0) {
       var x = getX(Math.PI/30*i);
       var y = getY(Math.PI/30*i);
-      ctx.beginPath();
       ctx.moveTo(x*117,y*117);
       ctx.lineTo(x*125,y*125);
-      ctx.stroke();
     }
   }
+  ctx.stroke();
   
   var sec = now.getSeconds();
   var min = now.getMinutes();
@@ -107,7 +108,7 @@ function clock(ctx){
   ctx.restore();
 }
 
-eu.animate(function() {
+eu.animate(function(time) {
   clock(ctx);
 });
 
