@@ -26,12 +26,18 @@ drawSquadron(0, 0);
 ctx.save();
 
 var screenCapure = new Image();
-console.log('About to give the turn to the big billiard...')
-screenCapure.src = canvas.toBuffer();
+console.log('Capturing screen as a PNG...');
+var screenAsBuffer = canvas.toBuffer();
+console.log('Rendering it back to an Image object...');
+screenCapure.src = screenAsBuffer;
 console.log('Done.')
 
 var squid = fs.readFileSync(__dirname + '/images/squid.png');
 var img = new Image();
+
+// Incomplete image. Don't do anything, including crashing.
+ctx.drawImage(img, 0, 0, 100, 100);
+
 img.src = squid;
 ctx.drawImage(img, 30, 50, img.width / 4, img.height / 4);
 
