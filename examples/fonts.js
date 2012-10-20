@@ -14,39 +14,42 @@ var ctx = canvas.getContext('2d');
 
 var eu = require('./examples-util');
 
-var growthInterval = 100;
+var growthInterval = 50;
 var growthRate = 1.1;
-var rotation = 0;
+var rotationStep = -Math.PI / 180 * 5;
 var textSize = 40;
 var fullText = [];
 var lastTime = 0;
 
-function addText(time) {
-  if (Math.floor(time / growthInterval) > lastTime) {
-    fullText.push({ size: textSize, rotation: rotation, text: 'Abracadabra' });
-    textSize *= growthRate;
-    rotation = -Math.PI / 180 * 5;
-    lastTime = Math.floor(time / growthInterval);
-  }
-}
-
+var i = 0;
 function text(time) {
-  addText(time);
+  if (Math.floor(time / growthInterval) <= lastTime) return;
+
+  textSize *= growthRate;
+  lastTime = Math.floor(time / growthInterval);
 
   ctx.resetTransform();
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.translate(canvas.width / 2, canvas.height / 2);
   ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
-  ctx.textBaseline = 'middle';
 
-  ctx.rotate(-(fullText.length - 1) * rotation);
-  fullText.map(function (el) {
-    ctx.rotate(el.rotation);
-    ctx.translate(-el.size * 0.1, el.size * 0.1);
-    ctx.font = 'normal ' + Math.round(el.size) + 'px serif';
-    ctx.fillText(el.text, 0, 0);
-  });
+  ctx.rotate(i * rotationStep);
+  ctx.font = 'normal ' + Math.round(textSize) + 'px serif';
+  ctx.fillText('Abracadabra', 0, 0);
+
+  ctx.beginPath();
+  ctx.moveTo(-5, -5);
+  ctx.lineTo(+5, +5);
+  ctx.moveTo(-5, +5);
+  ctx.lineTo(+5, -5);
+  ctx.stroke();
+
+  i++;
 }
+
+ctx.resetTransform();
+ctx.clearRect(0, 0, canvas.width, canvas.height);
+canvas.vgSwapBuffers();
+ctx.strokeStyle = 'red';
 
 eu.animate(function (time) {
   text(time);
