@@ -2,11 +2,10 @@
 /*jslint indent: 2, node: true */
 "use strict";
 
-var eu = require('./examples-util');
+// Original code at:
+// https://github.com/LearnBoost/node-canvas/blob/master/examples/globalAlpha.js
 
-/**
- * Module dependencies.
- */
+var eu = require('./examples-util');
 
 var Canvas = require('../lib/canvas');
 var canvas = new Canvas(150, 150);

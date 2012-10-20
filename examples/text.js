@@ -2,6 +2,9 @@
 /*jslint indent: 2, node: true */
 "use strict";
 
+// Based on:
+// https://github.com/LearnBoost/node-canvas/blob/master/examples/text.js
+
 var Canvas = require('../lib/canvas');
 var canvas = new Canvas(200, 200);
 var ctx = canvas.getContext('2d');

@@ -2,6 +2,9 @@
 /*jslint indent: 2, node: true */
 "use strict";
 
+// Original code at:
+// https://github.com/LearnBoost/node-canvas/blob/master/examples/pango-glyphs.js
+
 var Canvas = require('../lib/canvas');
 var canvas = new Canvas(400, 100);
 var ctx = canvas.getContext('2d');

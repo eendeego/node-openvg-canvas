@@ -2,6 +2,10 @@
 /*jslint indent: 2, node: true */
 "use strict";
 
+// Based on:
+// https://github.com/LearnBoost/node-canvas/blob/master/examples/clock.js
+// http://en.wikipedia.org/wiki/Swiss_railway_clock
+
 var fs = require('fs');
 var util = require('util');
 

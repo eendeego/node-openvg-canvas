@@ -3,6 +3,9 @@
 /*global Image: true */
 "use strict";
 
+// Original code at:
+// https://github.com/LearnBoost/node-canvas/blob/master/examples/image-src.js
+
 var Canvas = require('../lib/canvas');
 var Image = Canvas.Image;
 var canvas = new Canvas(200, 200);
@@ -31,14 +34,14 @@ console.log('Rendering it back to an Image object...');
 screenCapure.src = screenAsBuffer;
 console.log('Done.');
 
-var squid = fs.readFileSync(__dirname + '/images/squid.png');
+var squid = fs.readFileSync(__dirname + '/images/grid.png');
 var img = new Image();
 
 // Incomplete image. Don't do anything, including crashing.
 ctx.drawImage(img, 0, 0, 100, 100);
 
 img.src = squid;
-ctx.drawImage(img, 30, 50, img.width / 4, img.height / 4);
+ctx.drawImage(img, 64, 64, img.width / 2, img.height / 2);
 
 
 function secondScreen() {

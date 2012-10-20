@@ -2,6 +2,9 @@
 /*jslint indent: 2, node: true */
 "use strict";
 
+// Original code at:
+// https://github.com/LearnBoost/node-canvas/blob/master/examples/clock.js
+
 var fs = require('fs');
 var util = require('util');
 
