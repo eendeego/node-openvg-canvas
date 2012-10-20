@@ -7,7 +7,7 @@ var Canvas = require('../lib/canvas');
 var canvas = new Canvas(800, 800);
 var ctx = canvas.getContext('2d');
 
-var eu = require('./examples-util');
+var eu = require('./util');
 
 var growthInterval = 50;
 var growthRate = 1.1;

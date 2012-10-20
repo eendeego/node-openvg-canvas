@@ -9,7 +9,7 @@ var fs = require('fs');
 var util = require('util');
 
 var vg = require('openvg');
-var eu = require('./examples-util');
+var eu = require('./util');
 
 var Canvas = require('../lib/canvas');
 var canvas = new Canvas(320, 320);

@@ -5,12 +5,12 @@
 // Original code at:
 // https://github.com/LearnBoost/node-canvas/blob/master/examples/globalAlpha.js
 
-var eu = require('./examples-util');
+var eu = require('./util');
 
 var Canvas = require('../lib/canvas');
 var canvas = new Canvas(150, 150);
 var ctx = canvas.getContext('2d');
-var eu = require('./examples-util');
+var eu = require('./util');
 var fs = require('fs');
 
 ctx.clearRect(0, 0, canvas.width, canvas.height); //lll

@@ -7,7 +7,7 @@ var canvas = new Canvas(320, 320);
 var ctx = canvas.getContext('2d');
 var fs = require('fs');
 
-var eu = require('./examples-util');
+var eu = require('./util');
 
 ctx.clearRect(0, 0, canvas.width, canvas.height);
 ctx.scale(4, 4);

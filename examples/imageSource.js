@@ -12,7 +12,7 @@ var canvas = new Canvas(200, 200);
 var ctx = canvas.getContext('2d');
 var fs = require('fs');
 
-var eu = require('./examples-util');
+var eu = require('./util');
 var shapes = require('./shapes');
 
 ctx.clearRect(0, 0, canvas.width, canvas.height);

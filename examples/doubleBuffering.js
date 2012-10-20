@@ -6,7 +6,7 @@ var Canvas = require('../lib/canvas');
 var canvas = new Canvas(200, 200);
 var ctx = canvas.getContext('2d');
 
-var eu = require('./examples-util');
+var eu = require('./util');
 
 ctx.font = canvas.height / 4 + 'px sans';
 ctx.textAlign = 'center';
