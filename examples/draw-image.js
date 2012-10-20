@@ -1,25 +1,24 @@
 #!/usr/bin/env node-canvas
+/*jslint indent: 2, node: true */
+/*global Image: true */
+"use strict";
 
-/**
- * Module dependencies.
- */
-
-var Canvas = require('../lib/canvas')
-  , Image = Canvas.Image
-  , canvas = new Canvas(200, 200)
-  , ctx = canvas.getContext('2d')
-  , fs = require('fs');
+var Canvas = require('../lib/canvas');
+var Image = Canvas.Image;
+var canvas = new Canvas(200, 200);
+var ctx = canvas.getContext('2d');
+var fs = require('fs');
 
 var eu = require('./examples-util');
 
 var grid = fs.readFileSync(__dirname + '/images/grid.gif');
-img = new Image;
+var img = new Image();
 img.src = grid;
 
 var x0 = 64, y0 = 64;
 var x = x0, y = y0;
 
-ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.clearRect(0, 0, canvas.width, canvas.height);
 ctx.imageSmoothingEnabled = false;
 
 ctx.fillStyle = '#fff';

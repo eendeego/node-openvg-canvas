@@ -1,20 +1,18 @@
 #!/usr/bin/env node-canvas
+/*jslint indent: 2, node: true */
+"use strict";
 
-/**
- * Module dependencies.
- */
-
-var Canvas = require('../lib/canvas')
-  , canvas = new Canvas(800, 800)
-  , ctx = canvas.getContext('2d')
-  , fs = require('fs');
+var Canvas = require('../lib/canvas');
+var canvas = new Canvas(800, 800);
+var ctx = canvas.getContext('2d');
+var fs = require('fs');
 
 var eu = require('./examples-util');
 
-ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.clearRect(0, 0, canvas.width, canvas.height);
 ctx.strokeStyle = '#fff';
 
-ctx.globalAlpha = .5;
+ctx.globalAlpha = 0.5;
 
 ctx.beginPath();
 ctx.moveTo( 80, 600);
@@ -63,16 +61,16 @@ var y = 300 + (m.actualBoundingBoxAscent + m.actualBoundingBoxDescent) / 2 - m.a
 ctx.translate(320, y);
 ctx.scale(2, 2);
 
-ctx.globalAlpha = .5;
+ctx.globalAlpha = 0.5;
 
-ctx.lineWidth = 1/2;
+ctx.lineWidth = 1 / 2;
 ctx.beginPath();
 ctx.moveTo(-hw * 1.2, -(m.actualBoundingBoxAscent + m.actualBoundingBoxDescent) / 2 + m.actualBoundingBoxDescent);
 ctx.lineTo(+hw * 1.2, -(m.actualBoundingBoxAscent + m.actualBoundingBoxDescent) / 2 + m.actualBoundingBoxDescent);
 ctx.moveTo(-hw * 1.2, 0);
 ctx.lineTo(+hw * 1.2, 0);
-ctx.moveTo(        0, -m.actualBoundingBoxAscent - 0.1 * h);
-ctx.lineTo(        0, m.actualBoundingBoxDescent + 0.1 * h);
+ctx.moveTo(0, -m.actualBoundingBoxAscent - 0.1 * h);
+ctx.lineTo(0, m.actualBoundingBoxDescent + 0.1 * h);
 ctx.stroke();
 
 ctx.lineWidth = 2;
@@ -81,7 +79,7 @@ ctx.fillText('Top', 0, 0);
 ctx.strokeStyle = '#004080';
 ctx.strokeText('Top', 0, 0);
 
-ctx.lineWidth = 1/2;
+ctx.lineWidth = 1 / 2;
 ctx.strokeStyle = '#f00';
 ctx.strokeRect(m.actualBoundingBoxLeft,
                -m.actualBoundingBoxAscent,
@@ -100,6 +98,6 @@ ctx.moveTo(-hw * 1.2, -m.emHeightAscent);
 ctx.lineTo(+hw * 1.2, -m.emHeightAscent);
 ctx.stroke();
 
-canvas.vgSwapBuffers()
+canvas.vgSwapBuffers();
 eu.handleTermination();
 eu.waitForInput();

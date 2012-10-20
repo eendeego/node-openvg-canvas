@@ -1,6 +1,5 @@
 #!/usr/bin/env node-canvas
 /*jslint indent: 2, node: true */
-
 "use strict";
 
 var util = require('util');

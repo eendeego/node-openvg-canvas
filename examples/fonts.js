@@ -1,11 +1,6 @@
 #!/usr/bin/env node-canvas
 /*jslint indent: 2, node: true */
-
 "use strict";
-
-/**
- * Module dependencies.
- */
 
 var util = require('util');
 var Canvas = require('../lib/canvas');

@@ -1,27 +1,25 @@
 #!/usr/bin/env node-canvas
+/*jslint indent: 2, node: true */
+"use strict";
 
-/**
- * Module dependencies.
- */
-
-var Canvas = require('../lib/canvas')
-  , canvas = new Canvas(320, 320)
-  , ctx = canvas.getContext('2d')
-  , fs = require('fs');
+var Canvas = require('../lib/canvas');
+var canvas = new Canvas(320, 320);
+var ctx = canvas.getContext('2d');
+var fs = require('fs');
 
 var eu = require('./examples-util');
 
-ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.clearRect(0, 0, canvas.width, canvas.height);
 ctx.scale(4, 4);
 
 // Create gradients
-var lingrad = ctx.createLinearGradient(0,0,0,150);
+var lingrad = ctx.createLinearGradient(0, 0, 0, 150);
 lingrad.addColorStop(0, '#00ABEB');
 lingrad.addColorStop(0.5, '#fff');
 lingrad.addColorStop(0.5, '#26C000');
 lingrad.addColorStop(1, '#fff');
 
-var lingrad2 = ctx.createLinearGradient(0,50,0,95);
+var lingrad2 = ctx.createLinearGradient(0, 50, 0, 95);
 lingrad2.addColorStop(0.5, '#000');
 lingrad2.addColorStop(1, 'rgba(0,0,0,0)');
 
@@ -30,9 +28,9 @@ ctx.fillStyle = lingrad;
 ctx.strokeStyle = lingrad2;
 
 // draw shapes
-ctx.fillRect(10,10,130,130);
-ctx.strokeRect(50,50,50,50);
+ctx.fillRect(10, 10, 130, 130);
+ctx.strokeRect(50, 50, 50, 50);
 
-canvas.vgSwapBuffers()
+canvas.vgSwapBuffers();
 eu.handleTermination();
 eu.waitForInput();

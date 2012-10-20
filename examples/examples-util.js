@@ -1,3 +1,6 @@
+/*jslint indent: 2, node: true */
+"use strict";
+
 var eu = module.exports;
 
 var animationHandle;
@@ -8,14 +11,14 @@ var stopWatch = eu.stopWatch = function (str, fn) {
   fn();
   end = new Date();
   console.log(str + ' took: ' + (end - start) + 'ms');
-}
+};
 
 var animate = eu.animate = function (paint) {
   (function animloop(time) {
-    animationHandle = requestAnimationFrame(animloop);
+    requestAnimationFrame(animloop);
     paint(time);
   })();
-}
+};
 
 var handleTermination = eu.handleTermination = function (callback) {
   function terminate() {
@@ -23,7 +26,7 @@ var handleTermination = eu.handleTermination = function (callback) {
     console.log("Making a clean exit.");
   }
   process.on('exit', terminate);
-}
+};
 
 var waitForInput = eu.waitForInput = function (prompt, callback) {
   if (prompt === undefined) {
@@ -45,4 +48,4 @@ var waitForInput = eu.waitForInput = function (prompt, callback) {
       process.stdin.pause();
     }
   });
-}
+};

@@ -1,20 +1,18 @@
 #!/usr/bin/env node-canvas
+/*jslint indent: 2, node: true */
+"use strict";
 
-/**
- * Module dependencies.
- */
-
-var Canvas = require('../lib/canvas')
-  , canvas = new Canvas(40, 15)
-  , ctx = canvas.getContext('2d')
-  , fs = require('fs');
+var Canvas = require('../lib/canvas');
+var canvas = new Canvas(40, 15);
+var ctx = canvas.getContext('2d');
+var fs = require('fs');
 
 var eu = require('./examples-util');
 
-ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.clearRect(0, 0, canvas.width, canvas.height);
 
 Object.defineProperty(Array.prototype, 'max', {
-  get: function(){
+  get: function () {
     var max = 0;
     for (var i = 0, len = this.length; i < len; ++i) {
       var n = this[i];
@@ -25,26 +23,26 @@ Object.defineProperty(Array.prototype, 'max', {
 });
 
 function spark(ctx, data) {
-  var len = data.length
-    , pad = 1
-    , width = ctx.canvas.width
-    , height = ctx.canvas.height
-    , barWidth = width / len
-    , max = data.max;
+  var len = data.length;
+  var pad = 1;
+  var width = ctx.canvas.width;
+  var height = ctx.canvas.height;
+  var barWidth = width / len;
+  var max = data.max;
   ctx.fillStyle = 'rgba(0,0,255,0.5)';
   ctx.strokeStyle = 'red';
   ctx.lineWidth = 1;
-  data.forEach(function(n, i){
-    var x = i * barWidth + pad
-      , y = height * (n / max)
+  data.forEach(function (n, i) {
+    var x = i * barWidth + pad;
+    var y = height * (n / max);
     ctx.lineTo(x, height - y);
     ctx.fillRect(x, height, barWidth - pad, -y);
   });
   ctx.stroke();
 }
 
-spark(ctx, [1,2,4,5,10,4,2,5,4,3,3,2]);
+spark(ctx, [1, 2, 4, 5, 10, 4, 2, 5, 4, 3, 3, 2]);
 
-canvas.vgSwapBuffers()
+canvas.vgSwapBuffers();
 eu.handleTermination();
 eu.waitForInput();
