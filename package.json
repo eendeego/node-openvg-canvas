@@ -18,7 +18,7 @@
     "canvas"
   ],
   "dependencies": {
-    "openvg" : "0.1.0",
+    "openvg" : "0.1.1",
     "node-image" : "https://github.com/luismreis/node-image/tarball/master"
   },
   "devDependencies": {},
