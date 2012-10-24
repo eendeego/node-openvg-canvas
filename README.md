@@ -28,7 +28,7 @@ To test:
 
 ## 1. Documentation
 
-### Canvas implementation status (by WHATWG Canvas IDL class/interface definition)
+### Canvas implementation status (by [WHATWG Canvas](http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html) IDL class/interface definition)
 
 * CanvasRenderingContext2D
   1. state - save/restore (done)
@@ -40,8 +40,7 @@ To test:
     2. patterns (to do)
   6. shadows (to do - after v. 1.0)
   7. clear/fill/stroke rect (done)
-  8. beginPath, fill, stroke /default path/ (done)
-    1. fill, stroke /custom path/ (to do)
+  8. beginPath, (see paths / path methods below), fill, stroke (done)
   9. focus ring (no plan to implement)
   10. scrollPathIntoView (no plan to implement)
   11. clip/reset clip (to do)
@@ -54,10 +53,10 @@ To test:
   1. drawing styles - line width, cap, join, miter limit (done)
   2. dashed lines (to do)
   3. text - font, textAlign, textBaseline (done)
-* CanvasPathMethods (only implemented for the context's currentDefaultPath)
+* CanvasPathMethods
   1. closePath() (done)
   2. moveTo, lineTo (done)
-  3. quadraticCurveTo, bezierCurveTo (done - untested)
+  3. quadraticCurveTo, bezierCurveTo (untested)
   4. arcTo (to do)
   5. rect (done)
   6. arc (done)
@@ -67,7 +66,7 @@ To test:
 * TextMetrics (done)
 * HitRegionOptions (no plan to implement)
 * ImageData (done)
-* Path (to do)
+* Path (done - see CanvasPathMethods)
 
 ### Differences from the HTML5 Canvas object / node-canvas
 
