@@ -28,53 +28,79 @@ To test:
 
 ## 1. Documentation
 
-### Canvas implementation status (by [WHATWG Canvas](http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html) IDL class/interface definition)
+### Reference
 
-* CanvasRenderingContext2D
-  1. state - save/restore (done)
-  2. matrix transformations: scale, transform, etc (done)
-  3. compositing - alpha, composite operation (done)
-  4. image smoothing (done)
-  5. stroke/fill style
-    1. gradients (done)
-    2. patterns (to do)
-  6. shadows (to do - after v. 1.0)
-  7. clear/fill/stroke rect (done)
-  8. beginPath, (see paths / path methods below), fill, stroke (done)
-  9. focus ring (no plan to implement)
-  10. scrollPathIntoView (no plan to implement)
-  11. clip/reset clip (to do)
-  12. isPointInPath (to do - after v. 1.0 - help appreciated)
-  13. fill/stroke/measure text (done)
-  14. drawImage (done)
-  15. hit regions (no plan to implement)
-  16. create/get/put image data (done)
-* CanvasDrawingStyles
-  1. drawing styles - line width, cap, join, miter limit (done)
-  2. dashed lines (to do)
-  3. text - font, textAlign, textBaseline (done)
-* CanvasPathMethods
-  1. closePath() (done)
-  2. moveTo, lineTo (done)
-  3. quadraticCurveTo, bezierCurveTo (untested)
-  4. arcTo (to do)
-  5. rect (done)
-  6. arc (done)
-  7. ellipse (done)
-* CanvasGradient (done)
-* CanvasPattern (to do)
-* TextMetrics (done)
-* HitRegionOptions (no plan to implement)
-* ImageData (done)
-* Path (done - see CanvasPathMethods)
+* [WHATWG](http://www.whatwg.org/specs/web-apps/current-work/multipage/the-canvas-element.html)
+* [w3c](http://www.w3.org/TR/2dcontext/)
+
+### Canvas implementation status
+
+The current project phase is "Making it work". As soon as the _to do_ items below are completed a "Making it fast." phase will start. This doesn't mean that there won't be any optimization until then, it just means the focus is to have a fairly complete feature set. Some of the features are already optimized.
+
+Otems marked as "✘" are not planned for implementation. Some because there's insufficient information (eg. focus ring), others because they don't make sense in this implementation (eg. scrollPathIntoView).
+
+<table>
+  <thead>
+    <tr><th colspan="3">Object / Feature</th><th>Status</th><th>Notes</th></tr>
+  </thead>
+  <tbody>
+    <tr><td colspan="3">CanvasRenderingContext2D</td><td></td><td></td></tr>
+    <tr><td colspan="3" style="padding-left:2em;">state - save/restore</td><td>✔</td><td></td></tr>
+    <tr><td colspan="3" style="padding-left:2em;">matrix transformations: scale, transform, etc</td><td>✔</td><td></td></tr>
+    <tr><td colspan="3" style="padding-left:2em;">compositing - alpha, composite operation</td><td>✔</td><td></td></tr>
+    <tr><td colspan="3" style="padding-left:2em;">image smoothing</td><td>✔</td><td></td></tr>
+    <tr><td colspan="3" style="padding-left:2em;">stroke/fill style</td><td>partial</td><td></td></tr>
+    <tr><td colspan="3" style="padding-left:2em;">- gradients</td><td>✔</td><td></td></tr>
+    <tr><td colspan="3" style="padding-left:2em;">- patterns</td><td>to do</td><td></td></tr>
+    <tr><td colspan="3" style="padding-left:2em;">shadows</td><td>to do (after v1.0)</td><td></td></tr>
+    <tr><td colspan="3" style="padding-left:2em;">clear/fill/stroke rect</td><td>✔</td><td></td></tr>
+    <tr><td colspan="3" style="padding-left:2em;">beginPath, paths / path methods, fill, stroke</td><td>to do</td><td>See path methods below</td></tr>
+    <tr><td colspan="3" style="padding-left:2em;">focus ring</td><td>✘</td><td></td></tr>
+    <tr><td colspan="3" style="padding-left:2em;">scrollPathIntoView</td><td>✘</td><td></td></tr>
+    <tr><td colspan="3" style="padding-left:2em;">clipping</td><td>to do</td><td></td></tr>
+    <tr><td colspan="3" style="padding-left:2em;">isPointInPath</td><td>to do (after v1.0)</td><td>really hard stuff here</td></tr>
+    <tr><td colspan="3" style="padding-left:2em;">fill/stroke/measure text</td><td>✔</td><td></td></tr>
+    <tr><td colspan="3" style="padding-left:2em;">drawImage</td><td>✔</td><td></td></tr>
+    <tr><td colspan="3" style="padding-left:2em;">hit regions</td><td>✘</td><td></td></tr>
+    <tr><td colspan="3" style="padding-left:2em;">create/get/put image data</td><td>✔</td><td></td></tr>
+    <tr><td colspan="3">CanvasDrawingStyles</td><td></td><td></td></tr>
+    <tr><td colspan="3" style="padding-left:2em;">drawing styles - line width, cap, join, miter limit</td><td>✔</td><td></td></tr>
+    <tr><td colspan="3" style="padding-left:2em;">dashed lines</td><td>to do</td><td></td></tr>
+    <tr><td colspan="3" style="padding-left:2em;">text - font, textAlign, textBaseline</td><td>✔</td><td></td></tr>
+    <tr><td colspan="3">CanvasPathMethods</td><td></td><td></td></tr>
+    <tr><td colspan="3" style="padding-left:2em;">beginPath</td><td>✔</td><td>Also implemented for user created Path</td></tr>
+    <tr><td colspan="3" style="padding-left:2em;">moveTo, lineTo</td><td>✔</td><td></td></tr>
+    <tr><td colspan="3" style="padding-left:2em;">quadraticCurveTo, bezierCurveTo</td><td>✔</td><td>untested</td></tr>
+    <tr><td colspan="3" style="padding-left:2em;">arcTo</td><td>to do</td><td></td></tr>
+    <tr><td colspan="3" style="padding-left:2em;">rect</td><td>✔</td><td></td></tr>
+    <tr><td colspan="3" style="padding-left:2em;">arc</td><td>✔</td><td></td></tr>
+    <tr><td colspan="3" style="padding-left:2em;">ellipse</td><td>✔</td><td></td></tr>
+    <tr><td colspan="3">CanvasGradient</td><td></td><td></td></tr>
+    <tr><td colspan="3" style="padding-left:2em;">drawing styles - line width, cap, join, miter limit</td><td>✔</td><td></td></tr>
+    <tr><td colspan="3" style="padding-left:2em;">dashed lines</td><td>to do</td><td></td></tr>
+    <tr><td colspan="3" style="padding-left:2em;">text - font, textAlign, textBaseline</td><td>✔</td><td></td></tr>
+    <tr><td colspan="3">CanvasPattern</td><td></td><td></td></tr>
+    <tr><td colspan="3" style="padding-left:2em;">drawing styles - line width, cap, join, miter limit</td><td>✔</td><td></td></tr>
+    <tr><td colspan="3" style="padding-left:2em;">dashed lines</td><td>to do</td><td></td></tr>
+    <tr><td colspan="3" style="padding-left:2em;">text - font, textAlign, textBaseline</td><td>✔</td><td></td></tr>
+    <tr><td colspan="3">TextMetrics</td><td>✔</td><td></td></tr>
+    <tr><td colspan="3">HitRegionOptions</td><td>✘</td><td></td></tr>
+    <tr><td colspan="3">ImageData</td><td>✔</td><td></td></tr>
+    <tr><td colspan="3">Path</td><td>✔</td><td>see CanvasPathMethods</td></tr>
+    <tr><td colspan="3" style="padding-left:2em;">addPath</td><td>to do</td><td></td></tr>
+    <tr><td colspan="3" style="padding-left:2em;">addPathByStrokingPath</td><td>✘</td><td></td></tr>
+    <tr><td colspan="3" style="padding-left:2em;">addText</td><td>to do</td><td></td></tr>
+    <tr><td colspan="3" style="padding-left:2em;">addPathByStrokingText</td><td>✘</td><td></td></tr>
+  </tbody>
+</table>
 
 ### Differences from the HTML5 Canvas object / node-canvas
 
-The HTML5 Canvas is used inside the browser runtime, so, its rendering is controlled automatically (and implicitly) by the browser.
+On browsers, the Canvas rendering is controlled by the browser runtime - this is referred in the w3c docs as the ' "update the rendering" step'.
 
-node-canvas code explicitly calls toBuffer or similar functions to render images.
+On node-canvas, user code explicitly calls toBuffer or similar functions to produce output. Note that this behavior can be reproduced on node-openvg-canvas by calling ImageData.saveToBuffer and/or Canvas.toBuffer.
 
-Code running on node-openvg-canvas must explicitly swap display buffers, to do so, either call ```vg.egl.swapBuffers``` from node-openvg or use the included requestAnimationFrame shim (for more information look at the clock examples) that does this after calling your paint (callback) function.
+Code running on node-openvg-canvas must explicitly swap display buffers, to do so, either call ```Canvas.vgSwapBuffers()``` or use the included requestAnimationFrame shim (for more information look at the clock examples) that does this after calling your paint (callback) function.
 
 ## License
 
