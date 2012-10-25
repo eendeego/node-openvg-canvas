@@ -52,7 +52,7 @@ Otems marked as "✘" are not planned for implementation. Some because there's i
     <tr><td style="padding-left:2em;">stroke/fill style</td><td>partial</td><td></td></tr>
     <tr><td style="padding-left:4em;">solid colors</td><td>✔</td><td></td></tr>
     <tr><td style="padding-left:4em;">gradients</td><td>✔</td><td></td></tr>
-    <tr><td style="padding-left:4em;">patterns</td><td>to do</td><td>OpenVG doesn't support one directional patterns.</td></tr>
+    <tr><td style="padding-left:4em;">patterns</td><td>to do</td><td>OpenVG doesn't support one-directional patterns.</td></tr>
     <tr><td style="padding-left:2em;">shadows</td><td>to do (after v1.0)</td><td>OpenVG doesn't support shadows.</td></tr>
     <tr><td style="padding-left:2em;">clear/fill/stroke rect</td><td>✔</td><td>fill/stroke Rect commands are too slow.</td></tr>
     <tr><td style="padding-left:2em;">beginPath, paths / path methods, fill, stroke</td><td>✔</td><td>See path methods below</td></tr>
@@ -60,7 +60,8 @@ Otems marked as "✘" are not planned for implementation. Some because there's i
     <tr><td style="padding-left:2em;">scrollPathIntoView</td><td>✘</td><td></td></tr>
     <tr><td style="padding-left:2em;">clipping</td><td>to do</td><td></td></tr>
     <tr><td style="padding-left:2em;">isPointInPath</td><td>to do (after v1.0)</td><td>Really _hard stuff_™ here. Not supported by OpenVG.</td></tr>
-    <tr><td style="padding-left:2em;">fill/stroke/measure text</td><td>✔</td><td>hanging and ideographic baselines are not implemented.</td></tr>
+    <tr><td style="padding-left:2em;">fill/stroke text</td><td>✔</td><td>Reasonably slow.</td></tr>
+    <tr><td style="padding-left:2em;">measure text</td><td>✔</td><td>hanging and ideographic baselines not implemented.</td></tr>
     <tr><td style="padding-left:2em;">drawImage</td><td>✔</td><td></td></tr>
     <tr><td style="padding-left:2em;">hit regions</td><td>✘</td><td></td></tr>
     <tr><td style="padding-left:2em;">create/get/put image data</td><td>✔</td><td></td></tr>
