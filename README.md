@@ -60,7 +60,7 @@ To test:
   4. arcTo (to do)
   5. rect (done)
   6. arc (done)
-  7. ellipse (done - rotation parameter ignored)
+  7. ellipse (done)
 * CanvasGradient (done)
 * CanvasPattern (to do)
 * TextMetrics (done)

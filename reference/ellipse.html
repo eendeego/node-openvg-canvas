@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<body style="background: #303030;">
+  <canvas id="the-canvas" width="400" height="400"></canvas>
+
+  <script type="text/javascript">
+    (function init() {
+      var canvas = document.getElementById('the-canvas');
+      var ctx = canvas.getContext('2d');
+
+      // This is an approximation to the final ellipse function implementation.
+      // Strange => Canvas paths cannot have transformations midway
+      strangeEllipse = function (x, y, radiusX, radiusY, rotation, startAngle, endAngle, anticlockwise) {
+        ctx.save();
+
+        ctx.translate(x, y);
+        ctx.rotate(rotation);
+        ctx.scale(radiusX, radiusY);
+
+        ctx.arc(0 /* x */, 0 /* y */, 1 /* radius */, startAngle, endAngle, anticlockwise);
+
+        ctx.restore();
+      };
+
+      ctx.fill = 'black';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.lineWidth = 5;
+
+      var x = 100;
+      var y = 100;
+      var radiusX = 100;
+      var radiusY = 50;
+      var startAngle = 0;
+      var endAngle = Math.PI / 2;
+      var rotation = Math.PI / 6;
+
+      ctx.strokeStyle = 'white';
+      ctx.beginPath();
+      strangeEllipse(x, y, radiusX, radiusY, rotation, 0, 2 * Math.PI, true);
+      ctx.stroke();
+      ctx.beginPath();
+      strangeEllipse(x + 200, y, radiusX, radiusY, rotation, 0, 2 * Math.PI, true);
+      ctx.stroke();
+      ctx.beginPath();
+      strangeEllipse(x, y + 200, radiusX, radiusY, rotation, 0, 2 * Math.PI, true);
+      ctx.stroke();
+      ctx.beginPath();
+      strangeEllipse(x + 200, y + 200, radiusX, radiusY, rotation, 0, 2 * Math.PI, true);
+      ctx.stroke();
+
+      ctx.strokeStyle = 'red';
+      ctx.beginPath();
+      strangeEllipse(x, y, radiusX, radiusY, rotation, startAngle, endAngle, false);
+      ctx.stroke();
+      ctx.beginPath();
+      strangeEllipse(x + 200, y, radiusX, radiusY, rotation, startAngle, endAngle, true);
+      ctx.stroke();
+      ctx.beginPath();
+      strangeEllipse(x, y + 200, radiusX, radiusY, rotation, endAngle, startAngle, false);
+      ctx.stroke();
+      ctx.beginPath();
+      strangeEllipse(x + 200, y + 200, radiusX, radiusY, rotation, endAngle, startAngle, true);
+      ctx.stroke();
+    })();
+  </script>
+</body>
+</html>
