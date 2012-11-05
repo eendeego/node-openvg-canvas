@@ -66,7 +66,7 @@ Otems marked as "✘" are not planned for implementation. Some because there's i
     <tr><td style="padding-left:2em;">hit regions</td><td>✘</td><td></td></tr>
     <tr><td style="padding-left:2em;">create/get/put image data</td><td>✔</td><td></td></tr>
     <tr><td>CanvasDrawingStyles</td><td></td><td></td></tr>
-    <tr><td style="padding-left:2em;">drawing styles - line width, cap, join, miter limit</td><td>✔</td><td></td></tr>
+    <tr><td style="padding-left:2em;">line caps/joins - line width, cap, join, miter limit</td><td>✔</td><td></td></tr>
     <tr><td style="padding-left:2em;">dashed lines</td><td>to do</td><td></td></tr>
     <tr><td style="padding-left:2em;">text - font, textAlign, textBaseline</td><td>✔</td><td></td></tr>
     <tr><td>CanvasPathMethods</td><td>✔</td><td></td></tr>
@@ -78,9 +78,7 @@ Otems marked as "✘" are not planned for implementation. Some because there's i
     <tr><td style="padding-left:2em;">arc</td><td>✔</td><td>See issue #2.</td></tr>
     <tr><td style="padding-left:2em;">ellipse</td><td>✔</td><td>No browser implements ellipse yet. See Issue #2.</td></tr>
     <tr><td>CanvasGradient</td><td></td><td></td></tr>
-    <tr><td style="padding-left:2em;">drawing styles - line width, cap, join, miter limit</td><td>✔</td><td></td></tr>
-    <tr><td style="padding-left:2em;">dashed lines</td><td>to do</td><td></td></tr>
-    <tr><td style="padding-left:2em;">text - font, textAlign, textBaseline</td><td>✔</td><td></td></tr>
+    <tr><td style="padding-left:2em;">addColorStop</td><td>✔</td><td></td></tr>
     <tr><td>CanvasPattern</td><td></td><td></td></tr>
     <tr><td style="padding-left:2em;">drawing styles - line width, cap, join, miter limit</td><td>✔</td><td></td></tr>
     <tr><td style="padding-left:2em;">dashed lines</td><td>to do</td><td></td></tr>
