@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<body style="background: #303030;">
+  <canvas id="the-canvas" width="500" height="400"></canvas>
+  <br>
+  <select id="demo" name="demo">
+    <option value="circle">circle</option>
+    <option value="ellipse">ellipse</option>
+    <option value="rotated-ellipse" selected>rotated-ellipse</option>
+  </select>
+
+  <script type="text/javascript" src="javascripts/arcTo.js"></script>
+  <script type="text/javascript">
+
+  (function init() {
+    var canvas = document.getElementById('the-canvas');
+    var painter = new arcTo.Painter(canvas);
+
+    function paint(time) {
+      painter.paint(time);
+      // painter.paint(0);
+      window.requestAnimationFrame(paint);
+    }
+
+    paint();
+
+    function setDemo() {
+      var demo = document.getElementById('demo').value;
+
+      if (demo === 'circle') {
+        painter.radiusX = 20;
+        painter.radiusY = 20;
+        painter.rotation = 0;
+      } else if (demo === 'ellipse') {
+        painter.radiusX = 40;
+        painter.radiusY = 10;
+        painter.rotation = 0;
+      } else {
+        painter.radiusX = 40;
+        painter.radiusY = 10;
+        painter.rotation = Math.PI / 6;
+      }
+    } 
+
+    document.getElementById('demo').addEventListener('change', setDemo);
+
+    setDemo();
+  })();
+
+  </script>
+</body>
+</html>
