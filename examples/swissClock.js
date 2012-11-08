@@ -36,7 +36,7 @@ function clock(ctx) {
   ctx.lineWidth = 14;
   ctx.strokeStyle = '#cccccc';
   ctx.fillStyle = '#eeeeee';
-  ctx.arc(0, 0, 142, 0, Math.PI * 2, true);
+  ctx.arc(0, 0, 142, 0, Math.PI * 2, false);
   ctx.stroke();
   ctx.fill();
 
@@ -111,7 +111,7 @@ function clock(ctx) {
   ctx.stroke();
 
   ctx.beginPath();
-  ctx.arc(x * 87, y * 87, 13, 0, Math.PI * 2, true);
+  ctx.arc(x * 87, y * 87, 13, 0, Math.PI * 2, false);
   ctx.fill();
   ctx.restore();
 }
