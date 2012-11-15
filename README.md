@@ -88,7 +88,7 @@ Otems marked as "✘" are not planned for implementation. Some because there's i
     <tr><td>ImageData</td><td>✔</td><td></td></tr>
     <tr><td>Path</td><td>✔</td><td>see CanvasPathMethods</td></tr>
     <tr><td style="padding-left:2em;">(constructor)</td><td>✔</td><td>No plans to add SVG path constructor for now.</td></tr>
-    <tr><td style="padding-left:2em;">addPath</td><td>to do</td><td></td></tr>
+    <tr><td style="padding-left:2em;">addPath</td><td>✔</td><td></td></tr>
     <tr><td style="padding-left:2em;">addPathByStrokingPath</td><td>✘</td><td></td></tr>
     <tr><td style="padding-left:2em;">addText</td><td>to do</td><td></td></tr>
     <tr><td style="padding-left:2em;">addPathByStrokingText</td><td>✘</td><td></td></tr>
