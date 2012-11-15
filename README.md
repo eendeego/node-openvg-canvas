@@ -80,9 +80,6 @@ Otems marked as "✘" are not planned for implementation. Some because there's i
     <tr><td>CanvasGradient</td><td></td><td></td></tr>
     <tr><td style="padding-left:2em;">addColorStop</td><td>✔</td><td></td></tr>
     <tr><td>CanvasPattern</td><td></td><td></td></tr>
-    <tr><td style="padding-left:2em;">drawing styles - line width, cap, join, miter limit</td><td>✔</td><td></td></tr>
-    <tr><td style="padding-left:2em;">dashed lines</td><td>to do</td><td></td></tr>
-    <tr><td style="padding-left:2em;">text - font, textAlign, textBaseline</td><td>✔</td><td></td></tr>
     <tr><td>TextMetrics</td><td>✔</td><td></td></tr>
     <tr><td>HitRegionOptions</td><td>✘</td><td></td></tr>
     <tr><td>ImageData</td><td>✔</td><td></td></tr>
