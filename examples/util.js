@@ -3,6 +3,9 @@
 
 var eu = module.exports;
 
+var fs = require('fs');
+var image = require('../lib/image');
+
 var animationHandle;
 
 var stopWatch = eu.stopWatch = function (str, fn) {
@@ -48,4 +51,10 @@ var waitForInput = eu.waitForInput = function (prompt, callback) {
       process.stdin.pause();
     }
   });
+};
+
+var saveScreenshot = eu.saveScreenshot = function (ctx, x, y, w, h, filename) {
+  var imageData = ctx.getImageData(x, y, w, h);
+  var buffer = image.saveToBuffer(imageData);
+  fs.writeFile(filename, buffer);
 };
