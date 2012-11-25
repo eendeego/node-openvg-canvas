@@ -67,7 +67,7 @@ Otems marked as "✘" are not planned for implementation. Some because there's i
     <tr><td style="padding-left:2em;">create/get/put image data</td><td>✔</td><td></td></tr>
     <tr><td>CanvasDrawingStyles</td><td></td><td></td></tr>
     <tr><td style="padding-left:2em;">line caps/joins - line width, cap, join, miter limit</td><td>✔</td><td></td></tr>
-    <tr><td style="padding-left:2em;">dashed lines</td><td>to do</td><td></td></tr>
+    <tr><td style="padding-left:2em;">dashed lines</td><td>✔</td><td></td></tr>
     <tr><td style="padding-left:2em;">text - font, textAlign, textBaseline</td><td>✔</td><td></td></tr>
     <tr><td>CanvasPathMethods</td><td>✔</td><td></td></tr>
     <tr><td style="padding-left:2em;">beginPath</td><td>✔</td><td>Also available on the Path object.</td></tr>
