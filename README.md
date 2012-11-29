@@ -53,12 +53,12 @@ Otems marked as "✘" are not planned for implementation. Some because there's i
     <tr><td style="padding-left:4em;">solid colors</td><td>✔</td><td></td></tr>
     <tr><td style="padding-left:4em;">gradients</td><td>✔</td><td></td></tr>
     <tr><td style="padding-left:4em;">patterns</td><td>to do</td><td>OpenVG doesn't support one-directional patterns.</td></tr>
-    <tr><td style="padding-left:2em;">shadows</td><td>to do (after v1.0)</td><td>OpenVG doesn't support shadows.</td></tr>
+    <tr><td style="padding-left:2em;">shadows</td><td>to do (after v1.0)</td><td>Not supported directly, but gaussian blur as a filter is available.</td></tr>
     <tr><td style="padding-left:2em;">clear/fill/stroke rect</td><td>✔</td><td>fill/stroke Rect commands are too slow.</td></tr>
-    <tr><td style="padding-left:2em;">beginPath, paths / path methods, fill, stroke</td><td>✔</td><td>See path methods below</td></tr>
+    <tr><td style="padding-left:2em;">beginPath, paths / path methods, fill, stroke</td><td>✔</td><td>See Path methods below</td></tr>
     <tr><td style="padding-left:2em;">focus ring</td><td>✘</td><td></td></tr>
     <tr><td style="padding-left:2em;">scrollPathIntoView</td><td>✘</td><td></td></tr>
-    <tr><td style="padding-left:2em;">clipping</td><td>to do</td><td></td></tr>
+    <tr><td style="padding-left:2em;">clipping region</td><td>✔</td><td></td></tr>
     <tr><td style="padding-left:2em;">isPointInPath</td><td>to do (after v1.0)</td><td>Really _hard stuff_™ here. Not supported by OpenVG.</td></tr>
     <tr><td style="padding-left:2em;">fill/stroke text</td><td>✔</td><td>Reasonably slow.</td></tr>
     <tr><td style="padding-left:2em;">measure text</td><td>✔</td><td>hanging and ideographic baselines not implemented.</td></tr>
@@ -76,7 +76,7 @@ Otems marked as "✘" are not planned for implementation. Some because there's i
     <tr><td style="padding-left:2em;">arcTo</td><td>✔</td><td>circular <strong>and</strong> elliptical</td></tr>
     <tr><td style="padding-left:2em;">rect</td><td>✔</td><td></td></tr>
     <tr><td style="padding-left:2em;">arc</td><td>✔</td><td>See issue #2.</td></tr>
-    <tr><td style="padding-left:2em;">ellipse</td><td>✔</td><td>No browser implements ellipse yet. See Issue #2.</td></tr>
+    <tr><td style="padding-left:2em;">ellipse</td><td>✔</td><td>See Issue #2.</td></tr>
     <tr><td>CanvasGradient</td><td></td><td></td></tr>
     <tr><td style="padding-left:2em;">addColorStop</td><td>✔</td><td></td></tr>
     <tr><td>CanvasPattern</td><td></td><td></td></tr>
@@ -84,7 +84,7 @@ Otems marked as "✘" are not planned for implementation. Some because there's i
     <tr><td>HitRegionOptions</td><td>✘</td><td></td></tr>
     <tr><td>ImageData</td><td>✔</td><td></td></tr>
     <tr><td>Path</td><td>✔</td><td>see CanvasPathMethods</td></tr>
-    <tr><td style="padding-left:2em;">(constructor)</td><td>✔</td><td>No plans to add SVG path constructor for now.</td></tr>
+    <tr><td style="padding-left:2em;">(constructor)</td><td>✔</td><td>SVG path constructor after v1.0</td></tr>
     <tr><td style="padding-left:2em;">addPath</td><td>✔</td><td></td></tr>
     <tr><td style="padding-left:2em;">addPathByStrokingPath</td><td>✘</td><td></td></tr>
     <tr><td style="padding-left:2em;">addText</td><td>✔</td><td>Position and Path variants</td></tr>
