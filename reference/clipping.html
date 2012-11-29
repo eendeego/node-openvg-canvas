@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<body style="background: #303030;">
+  <canvas id="the-canvas" width="500" height="400"></canvas>
+
+  <script type="text/javascript" src="javascripts/requestAnimationFrame.js"></script>
+  <script type="text/javascript">
+
+  (function init() {
+    var canvas = document.getElementById('the-canvas');
+    var ctx = canvas.getContext('2d');
+
+    var clip = false;
+    function setMask() {
+      if (clip) { return; }
+      var radius = 40;
+      var angle = Math.PI / 3;
+
+      if (!ctx.resetClip) {
+        // Without resetClip there's no way to reset the clipping region
+        // except for save/restore.
+        ctx.save();
+      }
+      ctx.translate(canvas.width / 2, canvas.height / 3);
+      ctx.beginPath();
+      ctx.arc(0 /* x */, 0 /* y */, radius /* radius */, angle, Math.PI - angle, true);
+      ctx.lineTo(-30, 120);
+      ctx.lineTo(30, 120);
+      ctx.closePath();
+      ctx.clip();
+
+      ctx.translate(-canvas.width / 2, -canvas.height / 3);
+      clip = true;
+    }
+
+    function resetMask() {
+      if (!clip) { return; }
+      if (ctx.resetClip) {
+        ctx.resetClip();
+      } else {
+        // Without resetClip there's no way to reset the clipping region
+        // except for save/restore.
+        ctx.restore();
+      }
+      clip = false;
+    }
+
+    function setup() {
+      ctx.fillStyle = 'black';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.lineWidth = 2;
+      setMask();
+      ctx.strokeStyle = 'rgba(128,0,0,0.5)';
+    }
+
+    var startTime = undefined;
+    function paint(time) {
+      var color = Math.floor(Math.random() * 255);
+      var alpha = Math.random();
+      if (startTime) {
+        if (((time - startTime) / 1000) % 4 < 2) {
+          setMask();
+          ctx.strokeStyle = 'rgba(' + color + ',0,0,' + (0.5 + alpha * 0.5) + ')';
+        } else {
+          resetMask();
+          ctx.strokeStyle = 'rgba(0,0,' + color + ',' + alpha * 0.5 + ')';
+        }
+      } else {
+        startTime = time;
+      }
+
+      ctx.beginPath();
+      ctx.moveTo(Math.random() * canvas.width, Math.random() * canvas.height);
+      ctx.lineTo(Math.random() * canvas.width, Math.random() * canvas.height);
+      ctx.stroke();
+
+      window.requestAnimationFrame(paint);
+    }
+
+    setup();
+
+    paint();
+  })();
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<body style="background: #303030;">
+  <canvas id="the-canvas" width="500" height="400"></canvas>
+
+  <script type="text/javascript" src="javascripts/requestAnimationFrame.js"></script>
+  <script type="text/javascript">
+
+  (function init() {
+    var canvas = document.getElementById('the-canvas');
+    var ctx = canvas.getContext('2d');
+
+    function paint(time) {
+      ctx.fillStyle = 'black';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.save();
+
+      ctx.beginPath();
+      ctx.rect(50, 50, 100, 100);
+      ctx.clip();
+
+      ctx.fillStyle = 'rgba(255,0,0,0.5)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.save();
+
+      ctx.beginPath();
+      ctx.rect(100, 100, 100, 100);
+      ctx.clip();
+
+      ctx.fillStyle = 'rgba(0,255,0,0.5)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.restore();
+
+      ctx.beginPath();
+      ctx.rect(75, 125, 100, 100);
+      ctx.clip();
+
+      ctx.fillStyle = 'rgba(0,0,255,0.5)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.restore();
+
+      ctx.beginPath();
+      ctx.rect(125, 75, 100, 100);
+      ctx.clip();
+
+      ctx.fillStyle = 'rgba(255,255,0,0.5)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+
+    paint();
+  })();
+
+  </script>
+</body>
+</html>
