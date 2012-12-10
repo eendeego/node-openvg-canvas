@@ -12,8 +12,7 @@
 using namespace node;
 using namespace v8;
 
-extern "C" void
-init(Handle<Object> target) {
+void init(Handle<Object> target) {
   NODE_SET_METHOD(target, "initFreeType" , freetype::InitFreeType);
   NODE_SET_METHOD(target, "doneFreeType" , freetype::DoneFreeType);
   NODE_SET_METHOD(target, "newMemoryFace", freetype::NewMemoryFace);
@@ -22,7 +21,7 @@ init(Handle<Object> target) {
   NODE_SET_METHOD(target, "getCharIndex" , freetype::GetCharIndex);
   NODE_SET_METHOD(target, "loadGlyph"    , freetype::LoadGlyph);
 }
-
+NODE_MODULE(freetype, init)
 
 /* FreeType */
 
