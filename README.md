@@ -52,7 +52,7 @@ Otems marked as "✘" are not planned for implementation. Some because there's i
     <tr><td style="padding-left:2em;">stroke/fill style</td><td>partial</td><td></td></tr>
     <tr><td style="padding-left:4em;">solid colors</td><td>✔</td><td></td></tr>
     <tr><td style="padding-left:4em;">gradients</td><td>✔</td><td></td></tr>
-    <tr><td style="padding-left:4em;">patterns</td><td>to do</td><td>OpenVG doesn't support one-directional patterns.</td></tr>
+    <tr><td style="padding-left:4em;">patterns</td><td>✔</td><td>OpenVG doesn't support one-directional patterns. For now only 'repeat' works.<br>No support for CanvasPattern's setTransform.</td></tr>
     <tr><td style="padding-left:2em;">shadows</td><td>to do (after v1.0)</td><td>Not supported directly, but gaussian blur as a filter is available.</td></tr>
     <tr><td style="padding-left:2em;">clear/fill/stroke rect</td><td>✔</td><td>fill/stroke Rect commands are too slow.</td></tr>
     <tr><td style="padding-left:2em;">beginPath, paths / path methods, fill, stroke</td><td>✔</td><td>See Path methods below</td></tr>
