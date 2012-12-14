@@ -15,6 +15,8 @@ var fs = require('fs');
 var eu = require('./util');
 var shapes = require('./shapes');
 
+var screenCapure = new Image();
+
 ctx.clearRect(0, 0, canvas.width, canvas.height);
 
 function drawSquadron(bx, by) {
@@ -24,24 +26,38 @@ function drawSquadron(bx, by) {
   shapes.drawColoredSquare(ctx, 120, bx + 240, by + 240, '#000');
 }
 
-drawSquadron(0, 0);
-ctx.save();
+function firstScreen() {
+  var grid = fs.readFileSync(__dirname + '/images/grid.gif');
+  var img = new Image();
 
-var screenCapure = new Image();
-console.log('Capturing screen as a PNG...');
-var screenAsBuffer = canvas.toBuffer();
-console.log('Rendering it back to an Image object...');
-screenCapure.src = screenAsBuffer;
-console.log('Done.');
+  drawSquadron(0, 0);
+  ctx.save();
 
-var squid = fs.readFileSync(__dirname + '/images/grid.png');
-var img = new Image();
+  canvas.vgSwapBuffers();
 
-// Incomplete image. Don't do anything, including crashing.
-ctx.drawImage(img, 0, 0, 100, 100);
+  console.log('Capturing screen as a PNG...');
+  var screenAsBuffer = canvas.toBuffer();
 
-img.src = squid;
-ctx.drawImage(img, 64, 64, img.width / 2, img.height / 2);
+  console.log('Writing to screenshots dir.');
+  fs.writeFileSync('examples/screenshots/imageSource_00.png', screenAsBuffer);
+
+  console.log('Rendering it back to an Image object...');
+  screenCapure.src = screenAsBuffer;
+
+  console.log('Done.');
+
+  // Incomplete image. Don't do anything, including crashing.
+  ctx.drawImage(img, 0, 0);
+
+  img.src = grid;
+  ctx.drawImage(img, 64, 64, img.width / 2, img.height / 2);
+
+  eu.saveScreenshot(ctx, 0, 0, canvas.width, canvas.height,
+                    'examples/screenshots/imageSource_01.png');
+
+  canvas.vgSwapBuffers();
+  eu.waitForInput('Press return to turn off the lights.', secondScreen);
+}
 
 
 function secondScreen() {
@@ -59,8 +75,10 @@ function thirdScreen() {
   drawSquadron(120, 120);
 
   canvas.vgSwapBuffers();
+
+  eu.saveScreenshot(ctx, 0, 0, canvas.width, canvas.height,
+                    'examples/screenshots/imageSource_final.png');
   eu.waitForInput();
 }
 
-canvas.vgSwapBuffers();
-eu.waitForInput('Press return to turn off the lights.', secondScreen);
+firstScreen();

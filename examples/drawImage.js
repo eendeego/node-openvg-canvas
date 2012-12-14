@@ -80,4 +80,8 @@ ctx.fillRect(x, y, 64, 128); // This rect shouldn't be visible
 ctx.drawImage(img, 32, 32, 64, 64, x, y, 64, 128);
 
 canvas.vgSwapBuffers();
+
+eu.saveScreenshot(ctx, 0, 0, 1024, 768,
+                  'examples/screenshots/drawImage.png');
+
 eu.waitForInput();
