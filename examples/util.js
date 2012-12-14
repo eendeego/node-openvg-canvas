@@ -18,7 +18,7 @@ var stopWatch = eu.stopWatch = function (str, fn) {
 
 var animate = eu.animate = function (paint) {
   (function animloop(time) {
-    requestAnimationFrame(animloop);
+    animationHandle = requestAnimationFrame(animloop);
     paint(time);
   })();
 };
