@@ -1,0 +1,10 @@
+body {
+  background: #303030;
+  font-family: sans-serif;
+  font-size: 12px;
+  color: #c0c0c0;
+}
+
+a, a:hover, a:active, a:visited {
+  color: #4080ff;
+}

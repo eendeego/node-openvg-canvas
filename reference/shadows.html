@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+  <link href="stylesheets/style.css" media="screen" rel="stylesheet" type="text/​css">
+</head>
+<body>
+  <canvas id="the-canvas" width="380" height="270"></canvas>
+  <br>
+  <a href="http://subtlepatterns.com/noisy-grid/">Noisy grid</a> found at <a href="http://subtlepatterns.com/">SubtlePatterns</a>.
+
+  <script type="text/javascript" src="javascripts/requestAnimationFrame.js"></script>
+  <script type="text/javascript">
+
+  (function init() {
+    var canvas = document.getElementById('the-canvas');
+    var ctx = canvas.getContext('2d');
+
+    var pattern;
+    var imagesLoading = 2;
+    var background = new Image();
+    var grid = new Image();
+    background.onload = function() {
+      pattern = ctx.createPattern(background, 'repeat');
+      if (--imagesLoading === 0) paint();
+    };
+    grid.onload = function() {
+      if (--imagesLoading === 0) paint();
+    };
+    background.src = 'images/noisy_grid.png';
+    grid.src = 'images/grido2.png';
+
+    function paint() {
+      ctx.fillStyle = pattern;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.save();
+
+      ctx.shadowColor = 'rgba(0,0,0,1.0)';
+      ctx.shadowBlur = 5;
+      ctx.shadowOffsetX = 2;
+      ctx.shadowOffsetY = 2;
+
+      var x, y;
+
+      y = 20;
+
+      ctx.fillStyle = 'rgba(255,0,0,0.5)';
+      ctx.fillRect(20, y, 40, 40);
+      ctx.beginPath();
+      ctx.rect(20 + 60, y, 40, 40);
+      ctx.fill();
+
+      ctx.fillStyle = 'rgba(0,255,0,0.5)';
+      ctx.fillRect(140, y, 40, 40);
+      ctx.beginPath();
+      ctx.rect(140 + 60, y, 40, 40);
+      ctx.fill();
+
+      ctx.fillStyle = 'rgba(0,0,255,0.5)';
+      ctx.fillRect(260, y, 40, 40);
+      ctx.beginPath();
+      ctx.rect(260 + 60, y, 40, 40);
+      ctx.fill();
+
+      y += 60;
+
+      ctx.strokeStyle = 'rgba(255,0,0,0.5)';
+      ctx.strokeRect(20, y, 100, 40);
+
+      ctx.strokeStyle = 'rgba(0,255,0,0.5)';
+      ctx.strokeRect(140, y, 100, 40);
+
+      ctx.strokeStyle = 'rgba(0,0,255,0.5)';
+      ctx.strokeRect(260, y, 100, 40);
+
+      ctx.font = '24px sans-serif';
+      y += 80;
+
+      ctx.fillStyle = 'rgba(255,0,0,0.5)';
+      ctx.fillText('Shadows', 20, y);
+
+      ctx.fillStyle = 'rgba(0,255,0,0.5)';
+      ctx.fillText('Shadows', 140, y);
+
+      ctx.fillStyle = 'rgba(0,0,255,0.5)';
+      ctx.fillText('Shadows', 260, y);
+
+      y += 20;
+      ctx.drawImage(grid,  20 + 18, y);
+      ctx.drawImage(grid, 140 + 18, y);
+
+      ctx.restore();
+
+      ctx.drawImage(grid, 260 + 18, y);
+    }
+
+  })();
+
+  </script>
+</body>
+</html>
