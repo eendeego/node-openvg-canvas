@@ -1,16 +1,25 @@
 # node-openvg-canvas
 ## Canvas implementation on node-openvg
 
-This module implements a HTML5 Canvas on OpenVG (node-openvg). It is targeted to the raspberry-pi.
+This module implements a HTML5 Canvas on top of OpenVG (node-openvg). It is targeted to the raspberry-pi.
 By using the OpenVG APIs on the Raspberry PI, all graphics code will run on the GPU with hardware acceleration.
 
-This library aims for API compatibility with [node-canvas](https://github.com/learnboost/node-canvas) where it applies / makes sense. While node-canvas is targeted to create images off screen, node-openvg-canvas is targeted to on screen usage, but not yet for user interaction.
+This library aims for API compatibility with [node-canvas](https://github.com/learnboost/node-canvas) where it applies and makes sense. While node-canvas is targeted to create images off screen, node-openvg-canvas is targeted to main screen usage, but not yet for user interaction.
 
 Currently there are only plans to implement the 2d context. Implementing the 3d context (web gl) should be possible by mapping OpenGL/ES.
 
 ## 0. Installation
 
-This module is targeted for node 0.8.x. Node >= 0.8.10 will compile out of the box on the raspberry.
+This module is targeted for node 0.8.x. Node >= 0.8.10 will compile out of the box on the raspberry. For building instructions please refer to this [gist](https://gist.github.com/3245130).
+
+### Prerequisites
+
+node-openvg-canvas depends on freetype and freeimage. To install these libraries
+on the raspberry - assuming a raspbian distribution - use:
+
+    sudo apt-get install libfreetype6 libfreetype6-dev libfreeimage3 libfreeimage-dev
+
+### Source code install
 
 Fetch the source:
 
@@ -26,6 +35,20 @@ To test:
     export PATH=$PWD/bin:$PATH
     examples/swissClock.js
 
+### NPM / module install
+
+Either run on your command line:
+
+    npm install openvg-canvas
+
+or add it to your package.json:
+
+    [...]
+      "dependencies": {
+        "openvg-canvas" : "1.1.0"
+      },
+    [...]
+
 ## 1. Documentation
 
 ### Reference
@@ -35,9 +58,10 @@ To test:
 
 ### Canvas implementation status
 
-The current project phase is "Making it work". As soon as the _to do_ items below are completed a "Making it fast." phase will start. This doesn't mean that there won't be any optimization until then, it just means the focus is to have a fairly complete feature set. Some of the features are already optimized.
+The project now implements the full HTML 5 Canvas Level 1 specification, plus most of
+the non interactive features of Level 2. The current focus on the project for releases in the short term is performance.
 
-Otems marked as "✘" are not planned for implementation. Some because there's insufficient information (eg. focus ring), others because they don't make sense in this implementation (eg. scrollPathIntoView).
+Items marked as "✘" are not planned for implementation. Some due to insufficient information (eg. focus ring), others because they don't make sense in this implementation (eg. scrollPathIntoView).
 
 <table>
   <thead>
@@ -53,7 +77,7 @@ Otems marked as "✘" are not planned for implementation. Some because there's i
     <tr><td style="padding-left:4em;">solid colors</td><td>✔</td><td></td></tr>
     <tr><td style="padding-left:4em;">gradients</td><td>✔</td><td></td></tr>
     <tr><td style="padding-left:4em;">patterns</td><td>✔</td><td>OpenVG doesn't support one-directional patterns. For now only 'no-repeat' and 'repeat' work.<br>No support for CanvasPattern's setTransform.</td></tr>
-    <tr><td style="padding-left:2em;">shadows</td><td>to do</td><td>Not supported directly, but gaussian blur as a filter is available.</td></tr>
+    <tr><td style="padding-left:2em;">shadows</td><td>✔</td><td></td></tr>
     <tr><td style="padding-left:2em;">clear/fill/stroke rect</td><td>✔</td><td>fill/stroke Rect commands are too slow.</td></tr>
     <tr><td style="padding-left:2em;">beginPath, paths / path methods, fill, stroke</td><td>✔</td><td>See Path methods below</td></tr>
     <tr><td style="padding-left:2em;">focus ring</td><td>✘</td><td></td></tr>
