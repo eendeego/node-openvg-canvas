@@ -9,7 +9,7 @@ var ctx = canvas.getContext('2d');
 var eu = require('./util');
 
 // ctx.translate(0.5, 0.5);
-ctx.scale(3, 3);
+// ctx.scale(3, 3);
 
 var radiusX = 20;
 var radiusY = 20;
