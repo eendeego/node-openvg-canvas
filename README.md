@@ -69,50 +69,51 @@ Items marked as "✘" are not planned for implementation. Some due to insufficie
   </thead>
   <tbody>
     <tr><td>CanvasRenderingContext2D</td><td></td><td></td></tr>
-    <tr><td style="padding-left:2em;">state - save/restore</td><td>✔</td><td>Need optimization.</td></tr>
-    <tr><td style="padding-left:2em;">matrix transformations: scale, transform, etc</td><td>✔</td><td></td></tr>
-    <tr><td style="padding-left:2em;">compositing - alpha, composite operation</td><td>✔</td><td></td></tr>
-    <tr><td style="padding-left:2em;">image smoothing</td><td>✔</td><td></td></tr>
-    <tr><td style="padding-left:2em;">stroke/fill style</td><td>✔</td><td></td></tr>
-    <tr><td style="padding-left:4em;">solid colors</td><td>✔</td><td></td></tr>
-    <tr><td style="padding-left:4em;">gradients</td><td>✔</td><td></td></tr>
-    <tr><td style="padding-left:4em;">patterns</td><td>✔</td><td>OpenVG doesn't support one-directional patterns. For now only 'no-repeat' and 'repeat' work.<br>No support for CanvasPattern's setTransform.</td></tr>
-    <tr><td style="padding-left:2em;">shadows</td><td>✔</td><td></td></tr>
-    <tr><td style="padding-left:2em;">clear/fill/stroke rect</td><td>✔</td><td>fill/stroke Rect commands are too slow.</td></tr>
-    <tr><td style="padding-left:2em;">beginPath, paths / path methods, fill, stroke</td><td>✔</td><td>See Path methods below</td></tr>
-    <tr><td style="padding-left:2em;">focus ring</td><td>✘</td><td></td></tr>
-    <tr><td style="padding-left:2em;">scrollPathIntoView</td><td>✘</td><td></td></tr>
-    <tr><td style="padding-left:2em;">clipping region</td><td>✔</td><td></td></tr>
-    <tr><td style="padding-left:2em;">isPointInPath</td><td>to do</td><td>Really _hard stuff_™ here. Not supported by OpenVG.</td></tr>
-    <tr><td style="padding-left:2em;">fill/stroke text</td><td>✔</td><td>Reasonably slow.</td></tr>
-    <tr><td style="padding-left:2em;">measure text</td><td>✔</td><td>hanging and ideographic baselines not implemented.</td></tr>
-    <tr><td style="padding-left:2em;">drawImage</td><td>✔</td><td></td></tr>
-    <tr><td style="padding-left:2em;">hit regions</td><td>✘</td><td></td></tr>
-    <tr><td style="padding-left:2em;">create/get/put image data</td><td>✔</td><td></td></tr>
+    <tr><td>- state - save/restore</td><td>✔</td><td></td></tr>
+    <tr><td>- matrix transformations: scale, transform, etc</td><td>✔</td><td></td></tr>
+    <tr><td>- compositing - alpha, composite operation</td><td>✔</td><td></td></tr>
+    <tr><td>- image smoothing</td><td>✔</td><td></td></tr>
+    <tr><td>- stroke/fill style</td><td>✔</td><td></td></tr>
+    <tr><td>- solid colors</td><td>✔</td><td></td></tr>
+    <tr><td>- gradients</td><td>✔</td><td></td></tr>
+    <tr><td>- patterns</td><td>✔</td><td><br>Support for CanvasPattern's setTransform planned.</td></tr>
+    <tr><td>- shadows</td><td>✔</td><td></td></tr>
+    <tr><td>- clear/fill/stroke rect</td><td>✔</td><td></td></tr>
+    <tr><td>- beginPath, paths / path methods, fill, stroke</td><td>✔</td><td>See Path methods below</td></tr>
+    <tr><td>- focus ring</td><td>✘</td><td></td></tr>
+    <tr><td>- scrollPathIntoView</td><td>✘</td><td></td></tr>
+    <tr><td>- clipping region</td><td>✔</td><td></td></tr>
+    <tr><td>- isPointInPath</td><td>to do</td><td>Really _hard stuff_™ here. Not supported by OpenVG.</td></tr>
+    <tr><td>- fill/stroke text</td><td>✔</td><td>Reasonably slow.</td></tr>
+    <tr><td>- measure text</td><td>✔</td><td>hanging and ideographic baselines not implemented.</td></tr>
+    <tr><td>- drawImage</td><td>✔</td><td></td></tr>
+    <tr><td>- hit regions</td><td>✘</td><td></td></tr>
+    <tr><td>- create/get/put image data</td><td>✔</td><td></td></tr>
     <tr><td>CanvasDrawingStyles</td><td></td><td></td></tr>
-    <tr><td style="padding-left:2em;">line caps/joins - line width, cap, join, miter limit</td><td>✔</td><td></td></tr>
-    <tr><td style="padding-left:2em;">dashed lines</td><td>✔</td><td></td></tr>
-    <tr><td style="padding-left:2em;">text - font, textAlign, textBaseline</td><td>✔</td><td></td></tr>
+    <tr><td>- line caps/joins - line width, cap, join, miter limit</td><td>✔</td><td></td></tr>
+    <tr><td>- dashed lines</td><td>✔</td><td></td></tr>
+    <tr><td>- text - font, textAlign, textBaseline</td><td>✔</td><td></td></tr>
     <tr><td>CanvasPathMethods</td><td>✔</td><td></td></tr>
-    <tr><td style="padding-left:2em;">beginPath</td><td>✔</td><td>Also available on the Path object.</td></tr>
-    <tr><td style="padding-left:2em;">moveTo, lineTo</td><td>✔</td><td></td></tr>
-    <tr><td style="padding-left:2em;">quadraticCurveTo, bezierCurveTo</td><td>✔</td><td>Untested</td></tr>
-    <tr><td style="padding-left:2em;">arcTo</td><td>✔</td><td>circular <strong>and</strong> elliptical</td></tr>
-    <tr><td style="padding-left:2em;">rect</td><td>✔</td><td></td></tr>
-    <tr><td style="padding-left:2em;">arc</td><td>✔</td><td>See issue #2.</td></tr>
-    <tr><td style="padding-left:2em;">ellipse</td><td>✔</td><td>See Issue #2.</td></tr>
-    <tr><td>CanvasGradient</td><td></td><td></td></tr>
-    <tr><td style="padding-left:2em;">addColorStop</td><td>✔</td><td></td></tr>
-    <tr><td>CanvasPattern</td><td></td><td></td></tr>
+    <tr><td>- beginPath</td><td>✔</td><td>Also available on the Path object.</td></tr>
+    <tr><td>- moveTo, lineTo</td><td>✔</td><td></td></tr>
+    <tr><td>- quadraticCurveTo, bezierCurveTo</td><td>✔</td><td>Untested</td></tr>
+    <tr><td>- arcTo</td><td>✔</td><td>circular <strong>and</strong> elliptical</td></tr>
+    <tr><td>- rect</td><td>✔</td><td></td></tr>
+    <tr><td>- arc</td><td>✔</td><td>See issue #2.</td></tr>
+    <tr><td>- ellipse</td><td>✔</td><td>See Issue #2.</td></tr>
+    <tr><td>CanvasGradient</td><td>✔</td><td></td></tr>
+    <tr><td>- addColorStop</td><td>✔</td><td></td></tr>
+    <tr><td>CanvasPattern</td><td>✔</td><td>OpenVG doesn't support one-directional patterns. For now only 'no-repeat' and 'repeat' work.</td></tr>
+    <tr><td>- setTransform</td><td>to do</td><td>Planned.</td></tr>
     <tr><td>TextMetrics</td><td>✔</td><td></td></tr>
     <tr><td>HitRegionOptions</td><td>✘</td><td></td></tr>
     <tr><td>ImageData</td><td>✔</td><td></td></tr>
     <tr><td>Path</td><td>✔</td><td>see CanvasPathMethods</td></tr>
-    <tr><td style="padding-left:2em;">(constructor)</td><td>✔</td><td>SVG path constructor after v1.0</td></tr>
-    <tr><td style="padding-left:2em;">addPath</td><td>✔</td><td></td></tr>
-    <tr><td style="padding-left:2em;">addPathByStrokingPath</td><td>✘</td><td></td></tr>
-    <tr><td style="padding-left:2em;">addText</td><td>✔</td><td>Position and Path variants</td></tr>
-    <tr><td style="padding-left:2em;">addPathByStrokingText</td><td>✘</td><td></td></tr>
+    <tr><td>- (constructor)</td><td>✔</td><td>SVG path constructor after v1.0</td></tr>
+    <tr><td>- addPath</td><td>✔</td><td></td></tr>
+    <tr><td>- addPathByStrokingPath</td><td>✘</td><td></td></tr>
+    <tr><td>- addText</td><td>✔</td><td>Position and Path variants</td></tr>
+    <tr><td>- addPathByStrokingText</td><td>✘</td><td></td></tr>
   </tbody>
 </table>
 
