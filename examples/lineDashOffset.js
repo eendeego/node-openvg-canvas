@@ -53,7 +53,7 @@ function paint(time) {
 
   if (!savedScreenshot && (time - startTime) > 100) {
     eu.saveScreenshot(ctx, 0, 0, 500, 400,
-                      'examples/screenshots/lineDash.png');
+                      'examples/screenshots/lineDashOffset.png');
     savedScreenshot = true;
   }
 }
