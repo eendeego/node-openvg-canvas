@@ -76,15 +76,15 @@ Items marked as "✘" are not planned for implementation. Some due to insufficie
     <tr><td>- stroke/fill style</td><td>✔</td><td></td></tr>
     <tr><td>- solid colors</td><td>✔</td><td></td></tr>
     <tr><td>- gradients</td><td>✔</td><td></td></tr>
-    <tr><td>- patterns</td><td>✔</td><td><br>Support for CanvasPattern's setTransform planned.</td></tr>
+    <tr><td>- patterns</td><td>✔</td><td><br>(see below)</td></tr>
     <tr><td>- shadows</td><td>✔</td><td></td></tr>
     <tr><td>- clear/fill/stroke rect</td><td>✔</td><td></td></tr>
-    <tr><td>- beginPath, paths / path methods, fill, stroke</td><td>✔</td><td>See Path methods below</td></tr>
+    <tr><td>- beginPath, paths / path methods, fill, stroke</td><td>✔</td><td></td></tr>
     <tr><td>- focus ring</td><td>✘</td><td></td></tr>
     <tr><td>- scrollPathIntoView</td><td>✘</td><td></td></tr>
     <tr><td>- clipping region</td><td>✔</td><td></td></tr>
-    <tr><td>- isPointInPath</td><td>to do</td><td>Really _hard stuff_™ here. Not supported by OpenVG.</td></tr>
-    <tr><td>- fill/stroke text</td><td>✔</td><td>Reasonably slow.</td></tr>
+    <tr><td>- isPointInPath</td><td>to do</td><td>Support planned.</td></tr>
+    <tr><td>- fill/stroke text</td><td>✔</td><td></td></tr>
     <tr><td>- measure text</td><td>✔</td><td>hanging and ideographic baselines not implemented.</td></tr>
     <tr><td>- drawImage</td><td>✔</td><td></td></tr>
     <tr><td>- hit regions</td><td>✘</td><td></td></tr>
@@ -97,18 +97,18 @@ Items marked as "✘" are not planned for implementation. Some due to insufficie
     <tr><td>- beginPath</td><td>✔</td><td>Also available on the Path object.</td></tr>
     <tr><td>- moveTo, lineTo</td><td>✔</td><td></td></tr>
     <tr><td>- quadraticCurveTo, bezierCurveTo</td><td>✔</td><td>Untested</td></tr>
-    <tr><td>- arcTo</td><td>✔</td><td>circular <strong>and</strong> elliptical</td></tr>
+    <tr><td>- arcTo</td><td>✔</td><td>Implemented Canvas Level 2 (elliptical arcs)</td></tr>
     <tr><td>- rect</td><td>✔</td><td></td></tr>
-    <tr><td>- arc</td><td>✔</td><td>See issue #2.</td></tr>
-    <tr><td>- ellipse</td><td>✔</td><td>See Issue #2.</td></tr>
+    <tr><td>- arc</td><td>✔</td><td></td></tr>
+    <tr><td>- ellipse</td><td>✔</td><td></td></tr>
     <tr><td>CanvasGradient</td><td>✔</td><td></td></tr>
     <tr><td>- addColorStop</td><td>✔</td><td></td></tr>
-    <tr><td>CanvasPattern</td><td>✔</td><td>OpenVG doesn't support one-directional patterns. For now only 'no-repeat' and 'repeat' work.</td></tr>
+    <tr><td>CanvasPattern</td><td>✔</td><td>OpenVG doesn't support one-directional patterns. For now only 'no-repeat' and 'repeat' work as expected.</td></tr>
     <tr><td>- setTransform</td><td>to do</td><td>Planned.</td></tr>
     <tr><td>TextMetrics</td><td>✔</td><td></td></tr>
     <tr><td>HitRegionOptions</td><td>✘</td><td></td></tr>
     <tr><td>ImageData</td><td>✔</td><td></td></tr>
-    <tr><td>Path</td><td>✔</td><td>see CanvasPathMethods</td></tr>
+    <tr><td>Path</td><td>✔</td><td>(see CanvasPathMethods)</td></tr>
     <tr><td>- (constructor)</td><td>✔</td><td>SVG path constructor after v1.0</td></tr>
     <tr><td>- addPath</td><td>✔</td><td></td></tr>
     <tr><td>- addPathByStrokingPath</td><td>✘</td><td></td></tr>
