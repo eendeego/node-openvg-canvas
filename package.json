@@ -21,9 +21,14 @@
     "openvg" : "0.4.0",
     "node-image" : "https://github.com/luismreis/node-image/tarball/master"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "tap": "*"
+  },
   "license" : "MIT",
   "engines": {
     "node": ">=0.8"
+  },
+  "scripts": {
+    "test": "node node_modules/tap/bin/tap.js tests"
   }
 }
