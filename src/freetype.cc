@@ -36,13 +36,13 @@ Handle<Value> freetype::InitFreeType(const Arguments& args) {
     return ThrowException(Exception::TypeError(String::New("Error initializing freetype.")));
   }
 
-  return scope.Close(External::Wrap(library));
+  return scope.Close(External::New(library));
 }
 
 Handle<Value> freetype::DoneFreeType(const Arguments& args) {
   HandleScope scope;
 
-  FT_Library* library = static_cast<FT_Library*>(External::Unwrap(args[0]));
+  FT_Library* library = static_cast<FT_Library*>(External::Cast(*args[0])->Value());
   FT_Error error = FT_Done_FreeType(*library);
 
   free(library);
@@ -62,7 +62,7 @@ Handle<Value> freetype::DoneFreeType(const Arguments& args) {
 Handle<Value> freetype::NewMemoryFace(const Arguments& args) {
   HandleScope scope;
 
-  FT_Library* library = static_cast<FT_Library*>(External::Unwrap(args[0]));
+  FT_Library* library = static_cast<FT_Library*>(External::Cast(*args[0])->Value());
 
   if (!Buffer::HasInstance(args[1])) {
     return ThrowException(Exception::Error(
@@ -107,7 +107,7 @@ Handle<Value> freetype::NewMemoryFace(const Arguments& args) {
   }
 
   Handle<Object> faceObj = Object::New();
-  faceObj->Set(String::NewSymbol("face"), External::Wrap(face));
+  faceObj->Set(String::NewSymbol("face"), External::New(face));
   faceObj->Set(String::NewSymbol("glyph"), Null());
 
   faceObj->Set(String::NewSymbol("num_glyphs"), Int32::New((*face)->num_glyphs));
@@ -128,7 +128,7 @@ Handle<Value> freetype::DoneFace(const Arguments& args) {
 
   Handle<String> faceSymbol = String::NewSymbol("face");
   Handle<Object> faceObj = args[0]->ToObject();
-  FT_Face* face = static_cast<FT_Face*>(External::Unwrap(faceObj->Get(faceSymbol)));
+  FT_Face* face = static_cast<FT_Face*>(External::Cast(*faceObj->Get(faceSymbol))->Value());
 
   FT_Error error = FT_Done_Face(*face);
   free(face);
@@ -147,7 +147,7 @@ Handle<Value> freetype::SetCharSize(const Arguments& args) {
 
   Handle<String> faceSymbol = String::NewSymbol("face");
   Handle<Object> faceObj = args[0]->ToObject();
-  FT_Face face = *static_cast<FT_Face*>(External::Unwrap(faceObj->Get(faceSymbol)));
+  FT_Face face = *static_cast<FT_Face*>(External::Cast(*faceObj->Get(faceSymbol))->Value());
 
   FT_F26Dot6  char_width      = args[1]->Uint32Value();
   FT_F26Dot6  char_height     = args[2]->Uint32Value();
@@ -171,7 +171,7 @@ Handle<Value> freetype::GetCharIndex(const Arguments& args) {
 
   Handle<String> faceSymbol = String::NewSymbol("face");
   Handle<Object> faceObj = args[0]->ToObject();
-  FT_Face* face = static_cast<FT_Face*>(External::Unwrap(faceObj->Get(faceSymbol)));
+  FT_Face* face = static_cast<FT_Face*>(External::Cast(*faceObj->Get(faceSymbol))->Value());
 
   FT_ULong charcode = (FT_ULong) args[1]->Uint32Value();
 
@@ -185,7 +185,7 @@ Handle<Value> freetype::LoadGlyph(const Arguments& args) {
 
   Handle<String> faceSymbol = String::NewSymbol("face");
   Handle<Object> faceObj = args[0]->ToObject();
-  FT_Face face = *static_cast<FT_Face*>(External::Unwrap(faceObj->Get(faceSymbol)));
+  FT_Face face = *static_cast<FT_Face*>(External::Cast(*faceObj->Get(faceSymbol))->Value());
 
   FT_UInt  glyph_index = (FT_UInt) args[1]->Uint32Value();
   FT_Int32 load_flags = (FT_Int32) args[2]->Int32Value();
