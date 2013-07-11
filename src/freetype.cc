@@ -1,6 +1,6 @@
+#include <v8.h>
 #include <node.h>
 #include <node_buffer.h>
-#include <v8.h>
 
 #include "ft2build.h"
 #include FT_FREETYPE_H
@@ -36,15 +36,19 @@ Handle<Value> freetype::InitFreeType(const Arguments& args) {
     return ThrowException(Exception::TypeError(String::New("Error initializing freetype.")));
   }
 
-  return scope.Close(External::New(library));
+  Handle<Object> libraryObj = Object::New();
+  libraryObj->Set(String::NewSymbol("library"), External::New(library));
+  return scope.Close(libraryObj);
 }
 
 Handle<Value> freetype::DoneFreeType(const Arguments& args) {
   HandleScope scope;
 
-  FT_Library* library = static_cast<FT_Library*>(External::Cast(*args[0])->Value());
-  FT_Error error = FT_Done_FreeType(*library);
+  Handle<Object> libraryObj = args[0]->ToObject();
+  Handle<String> librarySymbol = String::NewSymbol("library");
+  FT_Library* library = static_cast<FT_Library*>(External::Cast(*libraryObj->Get(librarySymbol))->Value());
 
+  FT_Error error = FT_Done_FreeType(*library);
   free(library);
   V8::AdjustAmountOfExternalAllocatedMemory(-sizeof(FT_Library));
 
@@ -62,11 +66,13 @@ Handle<Value> freetype::DoneFreeType(const Arguments& args) {
 Handle<Value> freetype::NewMemoryFace(const Arguments& args) {
   HandleScope scope;
 
-  FT_Library* library = static_cast<FT_Library*>(External::Cast(*args[0])->Value());
+  Handle<Object> libraryObj = args[0]->ToObject();
+  Handle<String> librarySymbol = String::NewSymbol("library");
+  FT_Library* library = static_cast<FT_Library*>(External::Cast(*libraryObj->Get(librarySymbol))->Value());
 
   if (!Buffer::HasInstance(args[1])) {
     return ThrowException(Exception::Error(
-                String::New("Second argument needs to be a buffer")));
+                String::New("Second argument must be a buffer")));
   }
 
   Local<Object> bufferObj = args[1]->ToObject();
