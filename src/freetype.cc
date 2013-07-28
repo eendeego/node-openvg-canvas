@@ -6,6 +6,8 @@
 #include FT_FREETYPE_H
 #include FT_OUTLINE_H
 
+#include "v8_helpers.h"
+
 #include "util.h"
 #include "freetype.h"
 
@@ -13,6 +15,8 @@ using namespace node;
 using namespace v8;
 
 void init(Handle<Object> target) {
+  HandleScope scope;
+
   NODE_SET_METHOD(target, "initFreeType" , freetype::InitFreeType);
   NODE_SET_METHOD(target, "doneFreeType" , freetype::DoneFreeType);
   NODE_SET_METHOD(target, "newMemoryFace", freetype::NewMemoryFace);
@@ -26,22 +30,22 @@ NODE_MODULE(freetype, init)
 /* FreeType */
 
 
-Handle<Value> freetype::InitFreeType(const Arguments& args) {
+V8_METHOD(freetype::InitFreeType) {
   HandleScope scope;
 
   FT_Library *library = (FT_Library*) malloc(sizeof(FT_Library));
   V8::AdjustAmountOfExternalAllocatedMemory(sizeof(FT_Library));
 
   if (FT_Init_FreeType(library)) {
-    return ThrowException(Exception::TypeError(String::New("Error initializing freetype.")));
+    V8_THROW(Exception::TypeError(String::New("Error initializing freetype.")));
   }
 
   Handle<Object> libraryObj = Object::New();
   libraryObj->Set(String::NewSymbol("library"), External::New(library));
-  return scope.Close(libraryObj);
+  V8_RETURN(scope.Close(libraryObj));
 }
 
-Handle<Value> freetype::DoneFreeType(const Arguments& args) {
+V8_METHOD(freetype::DoneFreeType) {
   HandleScope scope;
 
   Handle<Object> libraryObj = args[0]->ToObject();
@@ -53,17 +57,17 @@ Handle<Value> freetype::DoneFreeType(const Arguments& args) {
   V8::AdjustAmountOfExternalAllocatedMemory(-sizeof(FT_Library));
 
   if (error) {
-    return ThrowException(Exception::TypeError(String::New("Error unloading face.")));
+    V8_THROW(Exception::TypeError(String::New("Error unloading face.")));
   }
 
-  return Undefined();
+  V8_RETURN(Undefined());
 }
 
 
 /* Face */
 
 
-Handle<Value> freetype::NewMemoryFace(const Arguments& args) {
+V8_METHOD(freetype::NewMemoryFace) {
   HandleScope scope;
 
   Handle<Object> libraryObj = args[0]->ToObject();
@@ -71,8 +75,7 @@ Handle<Value> freetype::NewMemoryFace(const Arguments& args) {
   FT_Library* library = static_cast<FT_Library*>(External::Cast(*libraryObj->Get(librarySymbol))->Value());
 
   if (!Buffer::HasInstance(args[1])) {
-    return ThrowException(Exception::Error(
-                String::New("Second argument must be a buffer")));
+    V8_THROW(Exception::Error(String::New("Second argument must be a buffer")));
   }
 
   Local<Object> bufferObj = args[1]->ToObject();
@@ -109,7 +112,7 @@ Handle<Value> freetype::NewMemoryFace(const Arguments& args) {
   if (error) {
     free(face);
     V8::AdjustAmountOfExternalAllocatedMemory(-sizeof(FT_Face));
-    return ThrowException(Exception::TypeError(String::New("Error loading face.")));
+    V8_THROW(Exception::TypeError(String::New("Error loading face.")));
   }
 
   Handle<Object> faceObj = Object::New();
@@ -126,10 +129,10 @@ Handle<Value> freetype::NewMemoryFace(const Arguments& args) {
   faceObj->Set(String::NewSymbol("descender"), Int32::New((*face)->descender));
   faceObj->Set(String::NewSymbol("height"), Int32::New((*face)->height));
 
-  return scope.Close(faceObj);
+  V8_RETURN(scope.Close(faceObj));
 }
 
-Handle<Value> freetype::DoneFace(const Arguments& args) {
+V8_METHOD(freetype::DoneFace) {
   HandleScope scope;
 
   Handle<String> faceSymbol = String::NewSymbol("face");
@@ -142,13 +145,13 @@ Handle<Value> freetype::DoneFace(const Arguments& args) {
   faceObj->Set(faceSymbol, Null());
 
   if (error) {
-    return ThrowException(Exception::TypeError(String::New("Error unloading face.")));
+    V8_THROW(Exception::TypeError(String::New("Error unloading face.")));
   }
 
-  return Undefined();
+  V8_RETURN(Undefined());
 }
 
-Handle<Value> freetype::SetCharSize(const Arguments& args) {
+V8_METHOD(freetype::SetCharSize) {
   HandleScope scope;
 
   Handle<String> faceSymbol = String::NewSymbol("face");
@@ -166,13 +169,13 @@ Handle<Value> freetype::SetCharSize(const Arguments& args) {
                      horz_resolution, vert_resolution);
 
   if (error) {
-    return ThrowException(Exception::TypeError(String::New("Error setting char size.")));
+    V8_THROW(Exception::TypeError(String::New("Error setting char size.")));
   }
 
-  return Undefined();
+  V8_RETURN(Undefined());
 }
 
-Handle<Value> freetype::GetCharIndex(const Arguments& args) {
+V8_METHOD(freetype::GetCharIndex) {
   HandleScope scope;
 
   Handle<String> faceSymbol = String::NewSymbol("face");
@@ -183,10 +186,10 @@ Handle<Value> freetype::GetCharIndex(const Arguments& args) {
 
   FT_UInt result = FT_Get_Char_Index(*face, charcode);
 
-  return scope.Close(Uint32::New(result));
+  V8_RETURN(scope.Close(Uint32::New(result)));
 }
 
-Handle<Value> freetype::LoadGlyph(const Arguments& args) {
+V8_METHOD(freetype::LoadGlyph) {
   HandleScope scope;
 
   Handle<String> faceSymbol = String::NewSymbol("face");
@@ -200,7 +203,7 @@ Handle<Value> freetype::LoadGlyph(const Arguments& args) {
     FT_Load_Glyph(face, glyph_index, load_flags);
 
   if (error) {
-    return ThrowException(Exception::TypeError(String::New("Error loading glyph.")));
+    V8_THROW(Exception::TypeError(String::New("Error loading glyph.")));
   }
 
   Local<Object> glyphObj = Object::New();
@@ -234,5 +237,5 @@ Handle<Value> freetype::LoadGlyph(const Arguments& args) {
 
   outlineObj->Set(String::NewSymbol("flags"  ), Int32::New(face->glyph->outline.flags));
 
-  return scope.Close(glyphObj);
+  V8_RETURN(scope.Close(glyphObj));
 }

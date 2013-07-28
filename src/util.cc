@@ -34,18 +34,24 @@ Local<Value> newInt32Array(size_t length) {
 Handle<Value> fillArray(Handle<Value> destination, void* source, size_t length) {
   HandleScope scope;
 
+#ifdef TYPED_ARRAY_TYPE_PRE_0_11
   Handle<Object> dest = Handle<Object>::Cast(destination);
   Handle<Object> buffer = dest->Get(String::New("buffer"))->ToObject();
   unsigned int offset       = dest->Get(String::New("byteOffset"))->Uint32Value();
   unsigned int bufferLength = dest->Get(String::New("byteLength"))->Uint32Value();
+  char* baseAddress = &((char*) buffer->GetIndexedPropertiesExternalArrayData())[offset];
+#else
+  Handle<TypedArray> dest = Handle<TypedArray>::Cast(destination);
+  unsigned int offset = dest->ByteOffset();
+  unsigned int bufferLength = dest->ByteLength();
+  void* baseAddress = dest->BaseAddress();
+#endif
 
   if (offset + length > bufferLength) {
     return ThrowException(Exception::TypeError(String::New("No space for data.")));
   }
 
-  memcpy(&((char*) buffer->GetIndexedPropertiesExternalArrayData())[offset],
-         source,
-         length);
+  memcpy(baseAddress, source, length);
 
   return scope.Close(Undefined());
 }

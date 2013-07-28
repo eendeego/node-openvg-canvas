@@ -5,19 +5,19 @@
 #include FT_FREETYPE_H
 #include FT_OUTLINE_H
 
-#include <node.h>
 #include <v8.h>
+#include <node.h>
 
-using namespace v8;
+#include "v8_helpers.h"
 
 namespace freetype {
-  static Handle<Value> InitFreeType(const Arguments& args);
-  static Handle<Value> DoneFreeType(const Arguments& args);
-  static Handle<Value> NewMemoryFace(const Arguments& args);
-  static Handle<Value> DoneFace(const Arguments& args);
-  static Handle<Value> SetCharSize(const Arguments& args);
-  static Handle<Value> GetCharIndex(const Arguments& args);
-  static Handle<Value> LoadGlyph(const Arguments& args);
+  V8_METHOD(InitFreeType);
+  V8_METHOD(DoneFreeType);
+  V8_METHOD(NewMemoryFace);
+  V8_METHOD(DoneFace);
+  V8_METHOD(SetCharSize);
+  V8_METHOD(GetCharIndex);
+  V8_METHOD(LoadGlyph);
 }
 
 #endif
