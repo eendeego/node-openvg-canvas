@@ -122,6 +122,14 @@ On node-canvas, user code explicitly calls toBuffer or similar functions to prod
 
 Code running on node-openvg-canvas must explicitly swap display buffers, to do so, either call ```Canvas.vgSwapBuffers()``` or use the included requestAnimationFrame shim that does this after calling your paint callback function (for more information look at the clock examples).
 
+## Some sample screenshots
+
+### Clipping (examples/clipping.js)
+
+[![Clipping](https://raw.github.com/luismreis/node-openvg-canvas/master/examples/screenshots/clipping.png)]
+
+
+
 ## License
 
 (The MIT License)
