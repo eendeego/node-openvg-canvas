@@ -1,4 +1,7 @@
 # node-openvg-canvas
+
+[![NPM](https://nodei.co/npm/openvg-canvas.png?downloads=true&stars=true)](https://nodei.co/npm-dl/openvg-canvas/) [![NPM](https://nodei.co/npm-dl/openvg-canvas.png)](https://nodei.co/npm-dl/openvg-canvas/)
+
 ## Canvas implementation on node-openvg
 
 This module implements a HTML5 Canvas on top of OpenVG (node-openvg). It is targeted to the raspberry-pi.
@@ -10,7 +13,9 @@ Currently there are only plans to implement the 2d context. Implementing the 3d 
 
 ## 0. Installation
 
-This module is targeted for node 0.8.x. Node >= 0.8.10 will compile out of the box on the raspberry. For building instructions please refer to this [gist](https://gist.github.com/3245130).
+This module has been tested on node 0.8, 0.10 and 0.11. Official node binaries for the
+raspberry pi can be found be clicking at "Other release files" link that accompanies every
+node release announcement, [example](http://nodejs.org/dist/v0.11.4/).
 
 ### Prerequisites
 
@@ -37,17 +42,9 @@ To test:
 
 ### NPM / module install
 
-Either run on your command line:
+Run on your command line:
 
-    npm install openvg-canvas
-
-or add it to your package.json:
-
-    [...]
-      "dependencies": {
-        "openvg-canvas" : "1.1.0"
-      },
-    [...]
+    npm install openvg-canvas --save
 
 ## 1. Documentation
 
@@ -123,7 +120,7 @@ On browsers, the Canvas rendering is controlled by the browser runtime - this is
 
 On node-canvas, user code explicitly calls toBuffer or similar functions to produce output. Note that this behavior can be reproduced on node-openvg-canvas by calling ImageData.saveToBuffer and/or Canvas.toBuffer.
 
-Code running on node-openvg-canvas must explicitly swap display buffers, to do so, either call ```Canvas.vgSwapBuffers()``` or use the included requestAnimationFrame shim (for more information look at the clock examples) that does this after calling your paint (callback) function.
+Code running on node-openvg-canvas must explicitly swap display buffers, to do so, either call ```Canvas.vgSwapBuffers()``` or use the included requestAnimationFrame shim that does this after calling your paint callback function (for more information look at the clock examples).
 
 ## License
 
