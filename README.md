@@ -123,12 +123,32 @@ On node-canvas, user code explicitly calls toBuffer or similar functions to prod
 Code running on node-openvg-canvas must explicitly swap display buffers, to do so, either call ```Canvas.vgSwapBuffers()``` or use the included requestAnimationFrame shim that does this after calling your paint callback function (for more information look at the clock examples).
 
 ## Some sample screenshots
+The code to produce these screenshots is included in the examples.
 
-### Clipping (examples/clipping.js)
+### Colors parsing
+examples/color.js
 
-[![Clipping](https://raw.github.com/luismreis/node-openvg-canvas/master/examples/screenshots/clipping.png)]
+![Color](https://raw.github.com/luismreis/node-openvg-canvas/master/examples/screenshots/color.png)
 
+### Clipping
+examples/clipping.js
 
+![Clipping](https://raw.github.com/luismreis/node-openvg-canvas/master/examples/screenshots/clipping.png)
+
+### Alpha
+examples/globalAlpha.js
+
+![globalAlpha](https://raw.github.com/luismreis/node-openvg-canvas/master/examples/screenshots/globalAlpha.png)
+
+### Shadows
+examples/clipping.js
+
+![Shadows](https://raw.github.com/luismreis/node-openvg-canvas/master/examples/screenshots/shadows.png)
+
+### Text along paths
+examples/pathText.js
+
+![Path Text](https://raw.github.com/luismreis/node-openvg-canvas/master/examples/screenshots/pathText.png)
 
 ## License
 
@@ -141,3 +161,11 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+====
+
+This module used to depend on node-image (BSD license) [npm](https://npmjs.org/package/node-image) / [github](https://github.com/mikeseven/node-image) for image loading/saving, currently, it has it's own [FreeImage](http://freeimage.sourceforge.net/license.html) bindings.
+
+====
+
+Font loading and rendering via [FreeType](http://www.freetype.org/) is based on code originaly from [Hybrid Graphics, Ltd](http://web.archive.org/web/20070808195023/http://developer.hybrid.fi/font2openvg/index.html) (BSD license).
