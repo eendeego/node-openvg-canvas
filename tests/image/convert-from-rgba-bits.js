@@ -2,7 +2,17 @@
 
 var test = require("tap").test;
 
-var FreeImage = require(__dirname + "/../../build/Release/freeimage").FreeImage;
+var FreeImage = null;
+
+try {
+  FreeImage = require(__dirname + "/../../build/Release/freeimage").FreeImage;
+} catch(exception) {
+  test = function (name) {
+    console.log('Skipping %s on this platform.', name);
+  };
+  // Don't run any tests
+  return;
+}
 
 test("converting from rgba bits", function (t) {
   var pixmap = new Uint8Array([0xff, 0xff, 0xff, 0xff,

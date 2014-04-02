@@ -4,6 +4,18 @@ var util = require('util');
 
 var test = require("tap").test;
 
+var FreeImage = null;
+
+try {
+  FreeImage = require(__dirname + "/../../build/Release/freeimage").FreeImage;
+} catch(exception) {
+  test = function (name) {
+    console.log('Skipping %s on this platform.', name);
+  };
+  // Don't run any tests
+  return;
+}
+
 test("loading an image from a buffer", function (t) {
   var xpm = [
     '/* XPM */',
@@ -23,8 +35,6 @@ test("loading an image from a buffer", function (t) {
   ].join('\n');
 
   var imageBuffer = new Buffer(xpm);
-
-  var FreeImage = require(__dirname + "/../../build/Release/freeimage").FreeImage;
 
   var image = FreeImage.loadFromMemory(imageBuffer);
   image = image.convertTo32Bits();
