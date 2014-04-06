@@ -1,8 +1,11 @@
+node_modules
 build
-.lock-wscript
-core
 
+.lock-wscript
+
+core
 .gdbinit
 .gdb_history
+v8.log
 
 ._*
