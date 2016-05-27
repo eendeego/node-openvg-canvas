@@ -1,11 +1,11 @@
 {
   "name": "openvg-canvas",
-  "preferGlobal" : "true",
+  "preferGlobal": "true",
   "version": "1.1.7",
   "author": "Luis Reis <luis@luismreis.com> (http://luismreis.com/)",
   "description": "Canvas on node-openvg",
   "bin": {
-    "node-canvas" : "./bin/node-canvas"
+    "node-canvas": "./bin/node-canvas"
   },
   "main": "lib/canvas.js",
   "repository": {
@@ -18,12 +18,13 @@
     "canvas"
   ],
   "dependencies": {
-    "openvg" : "~0.4.4"
+    "async": "^2.0.0-rc.5",
+    "openvg": "~0.4.4"
   },
   "devDependencies": {
     "tap": "*"
   },
-  "license" : "MIT",
+  "license": "MIT",
   "engines": {
     "node": ">=0.8"
   },
